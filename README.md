@@ -1,93 +1,48 @@
-# Week 1 - Day 1: Census Income Prediction (>50K)
-**UCI Adult Dataset — Problem Definition, EDA, Reproducible Splits, Baselines & Error Analysis**
-
----
-
-## 📌 Project Overview
-This repository contains the complete implementation for **Week 1 - Day 1** of the machine learning internship. The objective is to predict whether an individual earns over **$50,000/year** using census demographic and occupational attributes.
+# Web3Geeks Machine Learning Internship
+**Repository:** [internship_web3geeks](https://github.com/armishiqbal/internship_web3geeks)
 
 ---
 
 ## 📁 Repository Structure
 
 ```text
+├── day 1/
+│   ├── adults.csv               # Raw UCI Adult census dataset
+│   ├── eda_visualizations.png   # 4-panel EDA visualization plots
+│   ├── summary_table.csv        # Summary class counts & rates
+│   ├── summary_table.txt        # Detailed summary table
+│   ├── task1.py                 # Task 1: Problem Definition & Base Rate (24.08%)
+│   ├── task2.py                 # Task 2: Data Loading, Cleaning & Full EDA
+│   ├── task3.py                 # Task 3: Reproducible Stratified Splits (70/10/20)
+│   ├── task4.py                 # Task 4: Simple Baselines (F1: 0.5197 vs 0.00)
+│   ├── task5.py                 # Task 5: Error Analysis & Day 2 Feature Roadmap
+│   └── README.md                # Detailed Day 1 Report & Metrics
 ├── .gitignore
-├── README.md
-├── adults.csv               # Raw UCI Adult dataset
-├── summary_table.csv        # Summary counts and class rates
-├── summary_table.txt        # Detailed text summary table
-├── eda_visualizations.png   # 4-panel EDA visualization plots
-├── task1.py                 # Task 1: Problem Definition & Base Rate
-├── task2.py                 # Task 2: Data Load, Cleaning & Full EDA
-├── task3.py                 # Task 3: Reproducible Train/Dev/Test Splits
-├── task4.py                 # Task 4: Simple Baselines & Evaluation
-└── task5.py                 # Task 5: Error Analysis & Metric Optimization
+└── README.md
 ```
 
 ---
 
-## 🚀 Tasks Summary
+## 📅 Day 1: Census Income Prediction (>50K) — Overview
 
-### Task 1: Problem Definition & Success Metric
-* **Target ($y = 1$):** `income > 50K` (Positive class).
-* **Class Base Rate:**
-  * **Negative (`<=50K`):** 24,720 rows (**75.92%**)
-  * **Positive (`>50K`):** 7,841 rows (**24.08%**)
-* **Business Objective:** Targeted premium wealth advisory and financial services marketing outreach.
-* **Primary Metric:** **Precision / Precision@Top-$k$** (backed by **$F_1$-score** across threshold sweeps).
+* **Task 1 (Problem Definition & Metrics):** Defined the positive class ($>\$50\text{K}$) with a **24.08% base rate** and selected **Precision / $F_1$** as primary metrics for targeted financial outreach.
+* **Task 2 (Data Load & EDA):** Cleaned missing values (`'?'` $\rightarrow$ `NaN`), calculated demographic summaries, and generated 4-panel EDA charts (`day 1/eda_visualizations.png`).
+* **Task 3 (Reproducible Splits):** Stratified the 32,561 records into **70% Train ($22,792$) / 10% Dev ($3,256$) / 20% Hold-Out Test ($6,513$)** with a fixed seed (`42`).
+* **Task 4 (Baselines & Evaluation):** Benchmarked a majority predictor ($75.93\%$ accuracy, $0.00$ $F_1$) against a single-feature education rule (**$58.74\%$ Precision, $46.56\%$ Recall, $F_1 = 0.5197$**).
+* **Task 5 (Error Analysis & Roadmap):** Identified failure modes on junior graduates and skilled trade workers, planning Day 2 feature engineering (log transforms, binary capital flags, seniority interaction terms) to target **$F_1 > 0.65$**.
 
 ---
 
-### Task 2: Data Load & Exploratory Data Analysis (EDA)
-* Handled missing value tokens (`'?'` $\rightarrow$ `NaN`) across `workclass`, `occupation`, and `native_country`.
-* Generated summary statistics across numerical features and categorical distributions.
-* Generated **`eda_visualizations.png`** covering class distribution, age histograms, education rate comparisons, and hours worked.
-
----
-
-### Task 3: Reproducible Stratified Splits (70 / 10 / 20)
-* **Training Set (70%):** 22,792 samples (24.08% positive rate)
-* **Dev/Validation Set (10%):** 3,256 samples (24.08% positive rate)
-* **Hold-Out Test Set (20%):** 6,513 samples (24.07% positive rate)
-* Stratified on target with fixed `random_state=42`.
-
----
-
-### Task 4: Simple Baselines Evaluation (on Hold-Out Test Set)
-
-| Baseline Model | Accuracy | Precision | Recall | F1-Score | ROC AUC | PR AUC |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **1. Majority-Class (Always $\le 50\text{K}$)** | 75.93% | 0.0000 | 0.0000 | 0.0000 | 0.5000 | 0.2407 |
-| **2. Single-Feature Rule (`education_num` $\ge 13$)** | **78.18%** | **0.5874** | **0.4656** | **0.5197** | **0.6740** | **0.4021** |
-
----
-
-### Task 5: Initial Error Analysis & Next Steps
-* **False Positives (847):** Younger graduates in entry-level positions or individuals working part-time hours.
-* **False Negatives (803):** Senior tradespeople and managers (`Craft-repair`, `Exec-managerial`) without formal 4-year degrees who earn $>50\text{K}$ via overtime or career seniority.
-* **Key Fixes for Day 2:**
-  1. $\log(1 + x)$ transforms and binary flags for skewed `capital_gain` / `capital_loss`.
-  2. Imputing `'Missing'` token for categorical nulls.
-  3. Feature interaction terms ($\text{age} \times \text{education\_num}$, $\text{age} \times \text{hours\_per\_week}$).
-  4. Marital status consolidation.
-
----
-
-## 💻 How to Run
+## 💻 How to Run Day 1 Tasks
 
 ```bash
-# Task 1: Problem Definition & Base Rate
+# Navigate to day 1 folder
+cd "day 1"
+
+# Execute tasks
 python task1.py
-
-# Task 2: EDA & Visualization Generation
 python task2.py
-
-# Task 3: Reproducible Splits
 python task3.py
-
-# Task 4: Baseline Models Evaluation
 python task4.py
-
-# Task 5: Error Analysis
 python task5.py
 ```
