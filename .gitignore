@@ -1,9 +1,23 @@
-# Virtual Environment
+# Virtual Environments
 .venv/
 venv/
-__pycache__/
-*.pyc
+env/
+ENV/
 
-# Dataset & Large Artifacts (optional, but keep code clean)
-*.log
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*.class
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS artifacts
 .DS_Store
+Thumbs.db
+
+# Logs & scratch
+*.log

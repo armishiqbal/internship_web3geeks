@@ -1,0 +1,9 @@
+# Virtual Environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Dataset & Large Artifacts (optional, but keep code clean)
+*.log
+.DS_Store
