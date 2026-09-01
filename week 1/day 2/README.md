@@ -8,7 +8,6 @@
 
 ```text
 ├── week 1/
-│   ├── day 1/                                       # Day 1 Tasks & Baselines
 │   └── day 2/
 │       ├── day2.ipynb                               # ⭐ Primary Jupyter Notebook Deliverable
 │       ├── day2_summary_report.pdf                  # ⭐ 2-Page Executive PDF Report
