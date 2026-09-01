@@ -122,16 +122,16 @@ print(f"  FN: {cm2[1,0]:<5} | TP: {cm2[1,1]:<5}")
 print("\n" + "=" * 80)
 print("INTERPRETATION & UTILITY CRITERIA (3-4 Sentences):")
 print("=" * 80)
-print("""
+print(f"""
 1. Which Baseline Wins and Why:
    The single-feature rule-based baseline (education_num >= 13) clearly wins because,
-   unlike the majority predictor which achieves 75.92% accuracy with zero predictive value
-   (0.0 Precision, Recall, and F1), the education rule captures actual signal with 58.74%
-   precision, 46.56% recall, and an F1 of 0.5197.
+   unlike the majority predictor which achieves {metrics_majority['Accuracy']*100:.2f}% accuracy with zero predictive value
+   ({metrics_majority['Precision']:.1f} Precision, Recall, and F1), the education rule captures actual signal with {metrics_rule['Precision']*100:.2f}%
+   precision, {metrics_rule['Recall']*100:.2f}% recall, and an F1 of {metrics_rule['F1-Score']:.4f} (PR-AUC: {metrics_rule['PR AUC']:.4f}).
 
 2. Minimum Improvement for a Real Machine Learning Model to Be "Useful":
    To justify the complexity of deployment, an ML model must beat the simple single-feature
-   heuristic baseline by achieving an F1-score > 0.65 (a ~25%+ relative improvement),
-   a PR-AUC > 0.70, and a precision above 75% at a recall of at least 60%.
+   heuristic baseline by achieving an F1-score > 0.65 (a ~35%+ relative improvement),
+   a PR-AUC > 0.60, and a precision above 75% at a recall of at least 60%.
 """)
 print("=" * 80)

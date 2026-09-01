@@ -123,9 +123,9 @@ print("=" * 80)
 print("""
 For the rest of the week, our primary metric to optimize will be the F1-Score (and Precision@Top-k).
 Our Day 1 baselines demonstrated that Accuracy is completely misleading on this imbalanced dataset
-(the majority predictor scored 75.93% accuracy but delivered a 0.00 F1-score and zero business utility).
-Meanwhile, our single-feature education baseline set the performance benchmark at 58.74% Precision,
-46.56% Recall, and an F1-score of 0.5197 (PR-AUC: 0.4021). Optimizing for F1-score and PR-AUC will force
+(the majority predictor scored 75.91% accuracy but delivered a 0.00 F1-score and zero business utility).
+Meanwhile, our single-feature education baseline set the performance benchmark at 47.46% Precision,
+48.79% Recall, and an F1-score of 0.4811 (PR-AUC: 0.3548). Optimizing for F1-score and PR-AUC will force
 upcoming models (Logistic Regression, Random Forests, Gradient Boosting) to simultaneously push precision
 past 75% while scaling recall to 60-70%+, ensuring our marketing outreach captures maximum high earners
 without wasting budget on false positives.
