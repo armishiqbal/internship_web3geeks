@@ -13,8 +13,8 @@
 internship_web3geeks/
 ├── week 1/
 │   ├── day 1/
-│   │   ├── day1.ipynb                 # ⭐ Primary Jupyter Notebook (Tasks 1–5 + EDA)
-│   │   ├── day1_summary_report.pdf    # ⭐ 1-Page PDF Summary Deliverable
+│   │   ├── day1.ipynb                 #  Primary Jupyter Notebook (Tasks 1–5 + EDA)
+│   │   ├── day1_summary_report.pdf    #  1-Page PDF Summary Deliverable
 │   │   ├── adults.csv                 # Canonical UCI Adult Census Dataset (32,561 records)
 │   │   ├── eda_visualizations.png     # 4-Panel Exploratory Data Analysis Charts
 │   │   ├── summary_table.csv          # Demographic Class Distribution Summary
@@ -22,9 +22,9 @@ internship_web3geeks/
 │   │   ├── .gitignore                 # Local ignore rules
 │   │   └── README.md                  # Comprehensive Day 1 Documentation
 │   └── day 2/
-│       ├── day2.ipynb                 # ⭐ Primary Jupyter Notebook (Tasks 1–5 + Pipelines)
-│       ├── day2_summary_report.pdf    # ⭐ 2-Page Executive PDF Report
-│       ├── README.md                  # ⭐ 1–2 Page Markdown Write-Up
+│       ├── day2.ipynb                 #  Primary Jupyter Notebook (Tasks 1–5 + Pipelines)
+│       ├── day2_summary_report.pdf    #  2-Page Executive PDF Report
+│       ├── README.md                  #  1–2 Page Markdown Write-Up
 │       ├── pipeline.py                # Reusable Preprocessing & Model Factory Module
 │       ├── adults.csv                 # Canonical UCI Adult Dataset
 │       ├── day2_evaluation_curves.png # ROC & Precision-Recall Curves Plot
