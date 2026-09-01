@@ -8,20 +8,14 @@
 ```text
 ├── week 1/
 │   └── day 1/
-│       ├── day1_census_income_classification.ipynb  # Unified Jupyter Notebook (All 5 Tasks + Visuals)
+│       ├── day1.ipynb                               # ⭐ Primary Jupyter Notebook (All 5 Tasks)
+│       ├── day1_summary_report.pdf                  # ⭐ 1-Page PDF Summary Deliverable
 │       ├── adults.csv                               # UCI Adult census dataset (32,561 rows)
 │       ├── eda_visualizations.png                   # 4-panel EDA visualization plots
 │       ├── summary_table.csv                        # Summary class counts & rates
 │       ├── summary_table.txt                        # Detailed demographic summary tables
-│       ├── task1.py                                 # Task 1: Problem Definition & Base Rate (24.08%)
-│       ├── task2.py                                 # Task 2: Data Loading, Cleaning & Full EDA
-│       ├── task3.py                                 # Task 3: Reproducible Stratified Splits (70/10/20)
-│       ├── task4.py                                 # Task 4: Simple Baselines (F1: 0.4811 vs 0.00)
-│       ├── task5.py                                 # Task 5: Error Analysis & Day 2 Feature Roadmap
 │       ├── .gitignore                               # Day 1 local gitignore
 │       └── README.md                                # Detailed Day 1 Report & Metrics
-├── .gitignore                                       # Root Git ignore rules
-└── README.md                                        # Root Repository Overview
 ```
 
 ---
@@ -83,18 +77,8 @@ Evaluated on the $6,513$-sample hold-out test set:
 
 ## 💻 How to Run
 
-### Option A: Run Unified Jupyter Notebook
+### Open and Run Jupyter Notebook
 ```bash
-jupyter notebook "week 1/day 1/day1_census_income_classification.ipynb"
+jupyter notebook "week 1/day 1/day1.ipynb"
 ```
-
-### Option B: Execute Modular Python Scripts
-```bash
-cd "week 1/day 1"
-
-python task1.py
-python task2.py
-python task3.py
-python task4.py
-python task5.py
-```
+Or open [`day1.ipynb`](day1.ipynb) directly in VS Code / Cursor and select the Python virtual environment kernel (`.venv`).
