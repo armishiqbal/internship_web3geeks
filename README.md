@@ -1,82 +1,110 @@
-# Web3Geeks AI / ML Internship
+# Web3Geeks Machine Learning Internship
 
-Welcome to the **Web3Geeks Machine Learning & AI Internship** repository. This repository tracks daily problem-solving tasks, supervised machine learning experiments, and deliverables.
+**Author:** Armish Iqbal  
+**Repository:** [internship_web3geeks](https://github.com/armishiqbal/internship_web3geeks)  
+**Dataset:** UCI Adult Census Income Dataset ($N = 32,561$)  
+**Goal:** Predict high-income individuals ($>\$50\text{K}/\text{year}$) to optimize targeted marketing and credit screening campaigns while maintaining leak-free, reproducible machine learning workflows.
 
 ---
 
-## 📂 Repository Structure
+## 📁 Repository Structure
 
 ```text
 internship_web3geeks/
-├── .gitignore                                       # Root Git ignore rules
-├── README.md                                        # Main Repository Overview
 ├── week 1/
 │   ├── day 1/
-│   │   ├── day1_census_income_classification.ipynb  # Unified Day 1 Jupyter Notebook
-│   │   ├── adults.csv                               # UCI Adult census dataset (32,561 rows)
-│   │   ├── eda_visualizations.png                   # 4-panel EDA visualization plots
-│   │   ├── summary_table.csv                        # Class distribution table
-│   │   ├── summary_table.txt                        # Demographic summary tables
-│   │   ├── task1.py                                 # Task 1: Problem Definition & Base Rate (24.08%)
-│   │   ├── task2.py                                 # Task 2: Data Loading, Cleaning & Full EDA
-│   │   ├── task3.py                                 # Task 3: Reproducible Stratified Splits (70/10/20)
-│   │   ├── task4.py                                 # Task 4: Simple Baselines (F1: 0.4811 vs 0.00)
-│   │   ├── task5.py                                 # Task 5: Error Analysis & Feature Roadmap
-│   │   └── README.md                                # Detailed Day 1 Report & Metrics
+│   │   ├── day1.ipynb                 # ⭐ Primary Jupyter Notebook (Tasks 1–5 + EDA)
+│   │   ├── day1_summary_report.pdf    # ⭐ 1-Page PDF Summary Deliverable
+│   │   ├── adults.csv                 # Canonical UCI Adult Census Dataset (32,561 records)
+│   │   ├── eda_visualizations.png     # 4-Panel Exploratory Data Analysis Charts
+│   │   ├── summary_table.csv          # Demographic Class Distribution Summary
+│   │   ├── summary_table.txt          # Detailed Summary Tables
+│   │   ├── .gitignore                 # Local ignore rules
+│   │   └── README.md                  # Comprehensive Day 1 Documentation
 │   └── day 2/
-│       ├── day2.ipynb                               # Complete Day 2 Jupyter Notebook
-│       ├── adults.csv                               # UCI Adult census dataset (32,561 rows)
-│       ├── day2_evaluation_curves.png               # High-Res ROC & PR Curves
-│       ├── day2_confusion_matrices.png              # Confusion Matrix Heatmaps
-│       ├── task1.py                                 # Task 1: ColumnTransformer Preprocessing Pipeline
-│       ├── task2.py                                 # Task 2: Supervised Pipelines (LR & DT)
-│       ├── task3.py                                 # Task 3: Multi-Metric Evaluation & Comparison
-│       ├── task4.py                                 # Task 4: Interpretability Check (Weights & Splits)
-│       ├── task5.py                                 # Task 5: Model Selection Write-Up for Day 3
-│       ├── pipeline.py                              # Reusable Pipeline & Model Factory Module
-│       └── README.md                                # 1–2 Page Executive Report & Analysis
+│       ├── day2.ipynb                 # ⭐ Primary Jupyter Notebook (Tasks 1–5 + Pipelines)
+│       ├── day2_summary_report.pdf    # ⭐ 2-Page Executive PDF Report
+│       ├── README.md                  # ⭐ 1–2 Page Markdown Write-Up
+│       ├── pipeline.py                # Reusable Preprocessing & Model Factory Module
+│       ├── adults.csv                 # Canonical UCI Adult Dataset
+│       ├── day2_evaluation_curves.png # ROC & Precision-Recall Curves Plot
+│       └── day2_confusion_matrices.png# Confusion Matrices Heatmap
+├── .gitignore                         # Repository-wide ignore rules
+└── README.md                          # Top-level Repository Overview & Benchmarks
 ```
 
 ---
 
-## 🗓️ Weekly Overview
+## 📊 Master Benchmark & Performance Summary
 
-### [Week 1 — Day 1: Foundations & Problem Framing](week%201/day%201/README.md)
-* **Notebook:** [`day1_census_income_classification.ipynb`](week%201/day%201/day1_census_income_classification.ipynb)
-* **Problem Definition:** Positive class ($>\$50	ext{K}$) base rate = **$24.08\%$**. Prioritized Precision for expensive outbound sales advisory.
-* **Stratified Splits:** $70\%$ Train ($22,792$) / $10\%$ Dev ($3,256$) / $20\%$ Test ($6,513$).
-* **Baselines:** Majority Class ($0.00$ $F_1$) vs Single-Feature Heuristic (**Precision: $47.46\%$, Recall: $48.79\%$, $F_1 = 0.4811$**).
+All models were evaluated on the strictly isolated **$6,513$-instance hold-out test set** ($20\%$ stratified partition, `random_state=42`):
 
-### [Week 1 — Day 2: Supervised Pipelines & Model Interpretability](week%201/day%202/README.md)
-* **Notebook:** [`day2.ipynb`](week%201/day%202/day2.ipynb)
-* **Preprocessing:** Leak-free `ColumnTransformer` with `SimpleImputer(median)` $ightarrow$ `StandardScaler` for numerics, and `SimpleImputer(most_frequent)` $ightarrow$ `OneHotEncoder(handle_unknown='ignore')` for categoricals.
-* **Model Training:** End-to-end pipelines for **Regularized Logistic Regression ($L_2$)** and **Decision Tree Classifier**.
-* **Hold-Out Benchmark Results:**
-  * **Logistic Regression:** **Accuracy: $85.58\%$**, **Precision: $74.06\%$**, **Recall: $61.73\%$**, **$F_1	ext{-Score} = 0.6734$**, **$	ext{ROC-AUC} = 0.9078$**, **$	ext{PR-AUC} = 0.7732$** (Zero overfitting).
-  * **Decision Tree (Unpruned):** Accuracy: $81.04\%$, Precision: $59.93\%$, Recall: $64.09\%$, $F_1 = 0.6194$ (Severe overfitting: Depth $52$, Train $F_1 = 0.9999$).
-* **Interpretability:** Extracted top $10$ positive/negative coefficients (capital gains, marital status, executive management vs private domestic service, young dependents) and top $3$ tree root splits.
-* **Model Selection:** Advanced Logistic Regression as primary linear baseline and selected Tree Ensembles (Random Forest / Gradient Boosting) for Day 3 non-linear development.
+| Stage | Model / Strategy | Accuracy | Precision | Recall | $F_1$-Score | ROC-AUC | PR-AUC | Generalization Status |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Day 1** | Majority-Class Baseline (`<=50K`) | $0.7591$ | $0.0000$ | $0.0000$ | $0.0000$ | $0.2409$ | $0.2409$ | Trivial ($F_1 = 0$) |
+| **Day 1** | Education Heuristic (`education_num >= 13`) | $0.7367$ | $0.4746$ | $0.4879$ | $0.4811$ | $0.6582$ | $0.3548$ | Simple Rule Baseline |
+| **Day 2** | Decision Tree Classifier (Unpruned) | $0.8104$ | $0.5993$ | $0.6409$ | $0.6194$ | $0.7525$ | $0.4706$ | Severe Overfit ($-38.05\%$ F1 drop) |
+| **Day 2** | **Logistic Regression Pipeline ($L_2$)** | **$0.8558$** | **$0.7406$** | **$0.6173$** | **$0.6734$** | **$0.9078$** | **$0.7732$** | **Zero Overfitting (Superior)** |
 
 ---
 
-## 🚀 Getting Started
+## 🗓️ Weekly Progress & Milestones
 
-### Clone Repository
+### 🔹 [Week 1 Day 1: Problem Definition, EDA & Baselines](week%201/day%201/)
+* **Problem Framing:** Defined binary target ($y=1$ if $>\$50\text{K}$, $y=0$ if $\le\$50\text{K}$) with a base rate of **$24.08\%$** ($7,841$ positive / $24,720$ negative).
+* **Primary Metric:** Selected **Precision & $F_1$-Score** to minimize wasted outreach budget on non-high earners in premium customer acquisition.
+* **Leakage-Free Partitioning:** Established reproducible 3-way stratified splits ($70\%$ Train: $22,792$ / $10\%$ Dev: $3,256$ / $20\%$ Test: $6,513$).
+* **Baselines:** Majority baseline ($F_1 = 0.0000$) vs. Single-Feature Education Heuristic ($F_1 = 0.4811$).
+* **Deliverables:** [`day1.ipynb`](week%201/day%201/day1.ipynb), [`day1_summary_report.pdf`](week%201/day%201/day1_summary_report.pdf), and [`README.md`](week%201/day%201/README.md).
+
+### 🔹 [Week 1 Day 2: Supervised Pipelines & Interpretability](week%201/day%202/)
+* **Mixed-Type ColumnTransformer:**
+  * **Numeric Pipeline (6 features):** `SimpleImputer(strategy='median')` $\rightarrow$ `StandardScaler()` (immune to capital gain outliers up to $\$99,999$).
+  * **Categorical Pipeline (8 features):** `SimpleImputer(strategy='most_frequent')` $\rightarrow$ `OneHotEncoder(handle_unknown='ignore')` ($105$ encoded columns).
+* **Supervised Models in Pipelines:**
+  * **Logistic Regression:** $L_2$ regularized (`lbfgs`, $C=1.0$, `max_iter=1000`, `random_state=42`). Achieved **$85.58\%$ Accuracy**, **$74.06\%$ Precision**, **$0.6734$ $F_1$**, and **$0.9078$ ROC-AUC**.
+  * **Decision Tree:** Diagnosed severe overfitting (Depth $52$, $3,815$ leaves, Train $100\%$ vs Test $81.04\%$).
+* **Interpretability Check:**
+  * Top Positive Weights: `capital_gain` ($+2.25$, $9.47\times$ odds), `marital_status_Married-civ-spouse` ($+1.38$, $3.97\times$ odds), `relationship_Wife` ($+1.07$).
+  * Top Negative Weights: `occupation_Priv-house-serv` ($-1.38$, $0.25\times$ odds), `relationship_Own-child` ($-1.17$).
+  * Decision Tree Root Splits: `Married-civ-spouse` $\rightarrow$ `capital_gain` $\rightarrow$ `education_num` (Bachelors+).
+* **Deliverables:** [`day2.ipynb`](week%201/day%202/day2.ipynb), [`day2_summary_report.pdf`](week%201/day%202/day2_summary_report.pdf), [`README.md`](week%201/day%202/README.md), and reusable [`pipeline.py`](week%201/day%202/pipeline.py).
+
+---
+
+## 💻 How to Run the Project
+
+### 1. Environment Setup
+Clone the repository and install required scientific computing packages:
 ```bash
 git clone https://github.com/armishiqbal/internship_web3geeks.git
 cd internship_web3geeks
+
+pip install numpy pandas scikit-learn matplotlib seaborn jupyter
 ```
 
-### Running Day 2 Deliverables
+### 2. Run Interactive Jupyter Notebooks
+Launch either notebook directly:
 ```bash
-# Launch Jupyter Notebook
-jupyter notebook "week 1/day 2/day2.ipynb"
+# Day 1: EDA, Stratified Splitting & Baseline Analysis
+jupyter notebook "week 1/day 1/day1.ipynb"
 
-# Or run standalone Python scripts
-cd "week 1/day 2"
-python task1.py
-python task2.py
-python task3.py
-python task4.py
-python task5.py
+# Day 2: Supervised Pipelines, Metric Evaluation & Interpretability
+jupyter notebook "week 1/day 2/day2.ipynb"
 ```
+
+### 3. Import Reusable Preprocessing Pipeline
+```python
+import sys
+sys.path.append('week 1/day 2')
+from pipeline import get_column_preprocessor, get_pipeline
+
+# Obtain fully configured Scikit-Learn pipeline
+pipeline = get_pipeline(model_type='logistic_regression', C=1.0, random_state=42)
+```
+
+---
+
+## 👥 Author
+* **Armish Iqbal** — [GitHub Profile](https://github.com/armishiqbal)
+* **Organization:** Web3Geeks AI/ML Internship Program
