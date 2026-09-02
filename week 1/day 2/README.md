@@ -55,7 +55,7 @@ Evaluated across the $6,513$-instance hold-out test set ($20\%$ stratified split
 
 | Model / Pipeline | Accuracy | Precision | Recall | $F_1$-Score | ROC-AUC | PR-AUC |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Day 1: Majority-Class Baseline (`<=50K`)** | $0.7591$ | $0.0000$ | $0.0000$ | $0.0000$ | $0.2409$ | $0.2409$ |
+| **Day 1: Majority-Class Baseline (`<=50K`)** | $0.7591$ | $0.0000$ | $0.0000$ | $0.0000$ | $0.5000$ | $0.2409$ |
 | **Day 1: Single-Feature Heuristic (`education >= 13`)** | $0.7367$ | $0.4746$ | $0.4879$ | $0.4811$ | $0.6582$ | $0.3548$ |
 | **Day 2: Decision Tree Classifier (Unpruned)** | $0.8104$ | $0.5993$ | $0.6409$ | $0.6194$ | $0.7525$ | $0.4706$ |
 | **Day 2: Logistic Regression Pipeline ($L_2$)** | **$0.8558$** | **$0.7406$** | **$0.6173$** | **$0.6734$** | **$0.9078$** | **$0.7732$** |

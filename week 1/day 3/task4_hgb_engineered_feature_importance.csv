@@ -1,0 +1,9 @@
+Feature,Importance
+edu_x_hours,0.023731506944865765
+age_bucket,0.0011913265327180734
+hours_bin,0.0003493353334414917
+is_married,7.423791793944589e-05
+log_capital_gain,0.0
+has_capital_gain,0.0
+is_higher_ed,0.0
+has_capital_loss,0.0

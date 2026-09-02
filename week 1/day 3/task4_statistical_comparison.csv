@@ -1,0 +1,13 @@
+Metric,Value
+Logistic Regression Mean ROC-AUC,0.9142831375910392
+Logistic Regression Std ROC-AUC,0.003187217443449719
+HistGradientBoosting Mean ROC-AUC,0.9280455673936755
+HistGradientBoosting Std ROC-AUC,0.0035839369123170117
+Mean ROC-AUC Difference,0.013762429802636311
+Paired T-Test Statistic,33.446533789704944
+Paired T-Test P-Value,9.407483887207851e-11
+Wilcoxon Statistic,0.0
+Wilcoxon P-Value,0.001953125
+HGB Wins,10.0
+LR Wins,0.0
+Ties,0.0
