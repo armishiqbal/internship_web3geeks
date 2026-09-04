@@ -1,0 +1,11 @@
+age,education,marital_status,occupation,hours_per_week,prob_gt_50k,label,y_true,match
+49,Bachelors,Married-civ-spouse,Exec-managerial,40,0.8097095827304785,>50K,>50K,True
+70,Bachelors,Married-civ-spouse,Handlers-cleaners,40,0.7904206018951327,>50K,>50K,True
+29,Bachelors,Married-civ-spouse,Sales,45,0.48777895678126154,>50K,>50K,True
+34,Some-college,Married-civ-spouse,Sales,45,0.3230608929431952,<=50K,>50K,False
+59,Assoc-acdm,Married-civ-spouse,,35,0.4919282654051339,>50K,>50K,True
+50,Bachelors,Divorced,Exec-managerial,30,0.11723355486744877,<=50K,<=50K,True
+41,HS-grad,Divorced,,28,0.010044870640151657,<=50K,<=50K,True
+75,HS-grad,Married-civ-spouse,Farming-fishing,40,0.03129619191336201,<=50K,<=50K,True
+21,HS-grad,Never-married,Farming-fishing,24,0.0010191115427816782,<=50K,<=50K,True
+44,HS-grad,Never-married,Craft-repair,30,0.0265899649249745,<=50K,<=50K,True

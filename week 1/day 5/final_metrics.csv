@@ -1,0 +1,10 @@
+Model,Accuracy,Precision,Recall,F1,ROC-AUC,PR-AUC,Brier,Protocol,Role
+Day 1 Majority (<=50K),0.7592507293106096,0.0,0.0,0.0,0.5,0.24074927068939045,0.24074927068939045,this holdout n=6513,baseline
+Day 1 Education heuristic (edu_num>=13),0.7466605251036389,0.47456575682382135,0.48788265306122447,0.4811320754716981,0.6582992638410269,0.3548242782741096,,this holdout n=6513,baseline
+Day 2 Logistic Regression,0.8558,0.7406,0.6173,0.6734,0.9078,,,Day 2 published holdout,shortlist
+Day 2 Decision Tree (unpruned),0.8104,0.5993,0.6409,0.6194,0.7525,,,Day 2 published holdout,shortlist
+Day 4 Tuned Logistic,,,,0.6635,,,,5-fold CV on TRAIN only,shortlist
+Day 4 Tuned Random Forest,,,,0.6876,,,,5-fold CV on TRAIN only,shortlist
+Day 4 Tuned HGB (search winner),,,,0.715,,,,5-fold CV on TRAIN only,shortlist
+Day 4 saved artifact (metadata),0.8674957776754184,0.7122215532811559,0.7544642857142857,0.7327345927531743,0.9297246755122675,0.8330472849584944,0.08720242658054503,"Day 4 holdout, stored in artifact",Day 4 record
+SELECTED final model (loaded pipeline @ 0.40),0.8674957776754184,0.7132486388384754,0.7519132653061225,0.7320707854703509,0.9296955928478571,0.8334834553883993,0.08711589870367677,this holdout n=6513 (live),selected
