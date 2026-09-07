@@ -1,0 +1,6 @@
+google-genai>=1.0
+# default model: gemini-3.6-flash
+python-dotenv>=1.0
+matplotlib>=3.8
+reportlab>=4.0
+jupyter>=1.0
