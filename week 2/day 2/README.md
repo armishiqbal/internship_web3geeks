@@ -22,8 +22,7 @@ jupyter notebook day2.ipynb
 | `agent_setup.py` | AgentExecutor, memory, structured output |
 | `config.py` | Gemini API key + model |
 | `data/products.json` | External data source for pricing tool |
-| `day2_writeup.md` | 1-page raw vs LangChain comparison (Markdown) |
-| `day2_writeup.pdf` | 1-page raw vs LangChain comparison (ReportLab PDF) |
+| `day2_writeup.pdf` | 1-page raw vs LangChain comparison (PDF) |
 
 ## Tasks
 
@@ -32,9 +31,3 @@ jupyter notebook day2.ipynb
 3. **Agent** — `create_tool_calling_agent` + `AgentExecutor`, verbose trace vs Day 1  
 4. **Memory** — 3-turn pricing conversation with follow-ups  
 5. **Structured output + errors** — Pydantic recommendation + `broken_lookup` recovery  
-
-## Regenerate PDF
-
-```bash
-python generate_day2_pdf.py
-```
