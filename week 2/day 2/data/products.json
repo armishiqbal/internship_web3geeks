@@ -1,0 +1,20 @@
+{
+  "starter": {
+    "name": "Starter",
+    "price_usd": 19,
+    "tier": "basic",
+    "description": "Single user, 5 GB storage, email support."
+  },
+  "pro": {
+    "name": "Pro",
+    "price_usd": 49,
+    "tier": "standard",
+    "description": "Up to 10 users, 100 GB storage, priority support."
+  },
+  "enterprise": {
+    "name": "Enterprise",
+    "price_usd": 149,
+    "tier": "premium",
+    "description": "Unlimited users, SSO, dedicated success manager."
+  }
+}
