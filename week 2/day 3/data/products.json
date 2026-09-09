@@ -1,0 +1,38 @@
+{
+  "starter": {
+    "name": "Starter",
+    "price_usd": 19,
+    "tier": "basic",
+    "description": "Single user, 5 GB storage, email support."
+  },
+  "pro": {
+    "name": "Pro",
+    "price_usd": 49,
+    "tier": "standard",
+    "description": "Up to 10 users, 100 GB storage, priority support."
+  },
+  "enterprise": {
+    "name": "Enterprise",
+    "price_usd": 149,
+    "tier": "premium",
+    "description": "Unlimited users, SSO, dedicated success manager."
+  },
+  "slack": {
+    "name": "Slack Pro",
+    "price_usd": 8.75,
+    "tier": "collaboration",
+    "description": "Team messaging, unlimited message history, 10 app integrations."
+  },
+  "notion": {
+    "name": "Notion Plus",
+    "price_usd": 10,
+    "tier": "productivity",
+    "description": "Unlimited blocks for teams, unlimited file uploads, 30-day page history."
+  },
+  "github_copilot": {
+    "name": "GitHub Copilot Business",
+    "price_usd": 19,
+    "tier": "developer_tools",
+    "description": "AI code completion, chat, CLI, organization-wide policy management."
+  }
+}
