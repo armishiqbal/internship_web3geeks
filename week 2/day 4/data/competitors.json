@@ -1,0 +1,133 @@
+{
+  "slack": {
+    "name": "Slack",
+    "category": "Team Communication & Collaboration",
+    "tiers": {
+      "pro": {
+        "monthly_per_user_usd": 8.75,
+        "annual_per_user_usd": 7.25,
+        "storage_limit_gb": 10,
+        "message_history_days": "unlimited",
+        "integrations_limit": "unlimited",
+        "guest_accounts": true,
+        "sso_saml": false,
+        "data_loss_prevention": false,
+        "ai_addon_monthly_usd": 10.00
+      },
+      "business_plus": {
+        "monthly_per_user_usd": 15.00,
+        "annual_per_user_usd": 12.50,
+        "storage_limit_gb": 20,
+        "message_history_days": "unlimited",
+        "integrations_limit": "unlimited",
+        "guest_accounts": true,
+        "sso_saml": true,
+        "data_loss_prevention": false,
+        "ai_addon_monthly_usd": 10.00
+      },
+      "enterprise_grid": {
+        "monthly_per_user_usd": 32.00,
+        "annual_per_user_usd": 27.00,
+        "storage_limit_gb": 1000,
+        "message_history_days": "unlimited",
+        "integrations_limit": "unlimited",
+        "guest_accounts": true,
+        "sso_saml": true,
+        "data_loss_prevention": true,
+        "ai_addon_monthly_usd": 8.00
+      }
+    },
+    "key_weaknesses": [
+      "Steep price jumps to Enterprise Grid for compliance & SAML SSO",
+      "Expensive AI add-on ($10/user/mo) with limited generative autonomy",
+      "Context fragmentation across disconnected workspaces"
+    ],
+    "key_strengths": [
+      "Industry benchmark for real-time messaging and huddles",
+      "Massive 2,600+ app ecosystem and developer bot webhooks",
+      "High daily active user retention"
+    ]
+  },
+  "notion": {
+    "name": "Notion",
+    "category": "Knowledge Base & Workspace Wiki",
+    "tiers": {
+      "plus": {
+        "monthly_per_user_usd": 10.00,
+        "annual_per_user_usd": 8.00,
+        "storage_limit_gb": "unlimited",
+        "page_history_days": 30,
+        "guest_collaborators": 100,
+        "sso_saml": false,
+        "audit_logs": false,
+        "ai_addon_monthly_usd": 10.00
+      },
+      "business": {
+        "monthly_per_user_usd": 18.00,
+        "annual_per_user_usd": 15.00,
+        "storage_limit_gb": "unlimited",
+        "page_history_days": 90,
+        "guest_collaborators": 250,
+        "sso_saml": true,
+        "audit_logs": false,
+        "ai_addon_monthly_usd": 10.00
+      },
+      "enterprise": {
+        "monthly_per_user_usd": 28.00,
+        "annual_per_user_usd": 23.00,
+        "storage_limit_gb": "unlimited",
+        "page_history_days": "unlimited",
+        "guest_collaborators": "unlimited",
+        "sso_saml": true,
+        "audit_logs": true,
+        "ai_addon_monthly_usd": 8.00
+      }
+    },
+    "key_weaknesses": [
+      "Lacks native structured data validation and automated workflow execution",
+      "Performance latency degrades with databases exceeding 50,000 blocks",
+      "Weak native spreadsheet and quantitative modeling formulas"
+    ],
+    "key_strengths": [
+      "Unrivaled flexible block editor and aesthetic documentation",
+      "Strong nested page hierarchy and relational database links",
+      "Low friction onboarding for non-technical teams"
+    ]
+  },
+  "github_copilot": {
+    "name": "GitHub Copilot",
+    "category": "AI Developer Tooling & Code Generation",
+    "tiers": {
+      "business": {
+        "monthly_per_user_usd": 19.00,
+        "annual_per_user_usd": 19.00,
+        "code_completion": true,
+        "chat_ide": true,
+        "cli_assistance": true,
+        "content_exclusion_filter": true,
+        "audit_logs": true,
+        "custom_fine_tuned_models": false
+      },
+      "enterprise": {
+        "monthly_per_user_usd": 39.00,
+        "annual_per_user_usd": 39.00,
+        "code_completion": true,
+        "chat_ide": true,
+        "cli_assistance": true,
+        "content_exclusion_filter": true,
+        "audit_logs": true,
+        "custom_fine_tuned_models": true
+      }
+    },
+    "key_weaknesses": [
+      "Rigid per-seat pricing with zero annual volume discount on standard tiers",
+      "No support for business team non-coding workflows",
+      "Vendor lock-in tightly bound to GitHub ecosystem"
+    ],
+    "key_strengths": [
+      "Deep VS Code and JetBrains IDE integration",
+      "Proprietary context indexing across organizational repos",
+      "Indemnification protections for enterprise IP risks"
+    ]
+  }
+}

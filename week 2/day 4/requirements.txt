@@ -1,0 +1,8 @@
+crewai>=1.15.0
+crewai-tools>=1.15.0
+langchain-google-genai>=4.0.0
+python-dotenv>=1.0.0
+pydantic>=2.10.0
+reportlab>=4.0.0
+nbformat>=5.0.0
+ipykernel>=6.0.0
