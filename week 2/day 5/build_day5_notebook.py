@@ -408,16 +408,16 @@ c10_md = """## Task 5: Final Deliverables & Presentation Summary
 
 nb.cells = [
     nbf.v4.new_markdown_cell(c0_md),
-    nbf.v4.new_code_cell(c1_code),
     nbf.v4.new_markdown_cell(c2_md),
-    nbf.v4.new_code_cell(c3_code),
+    nbf.v4.new_code_cell(c1_code),
     nbf.v4.new_markdown_cell(c4_md),
-    nbf.v4.new_code_cell(c5_code),
+    nbf.v4.new_code_cell(c3_code),
     nbf.v4.new_markdown_cell(c6_md),
-    nbf.v4.new_code_cell(c7_code),
+    nbf.v4.new_code_cell(c5_code),
     nbf.v4.new_markdown_cell(c8_md),
-    nbf.v4.new_code_cell(c9_code),
+    nbf.v4.new_code_cell(c7_code),
     nbf.v4.new_markdown_cell(c10_md),
+    nbf.v4.new_code_cell(c9_code),
 ]
 
 with open(NOTEBOOK_PATH, "w", encoding="utf-8") as f:
