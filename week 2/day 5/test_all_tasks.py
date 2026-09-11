@@ -1,4 +1,4 @@
-"""Automated 5-Stage Verification Test Suite for Week 2 Day 5 Capstone (10/10 Standard).
+"""Automated 5-Stage Verification Test Suite for Week 2 Day 5 Capstone (Production Standard).
 Verifies System Design, End-to-End Execution, Evaluation Suite, FastAPI endpoints, and Deliverables.
 """
 
@@ -33,7 +33,7 @@ class TestWeek2Day5Capstone(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         print("\n" + "=" * 75)
-        print("🏆 EXECUTING WEEK 2 DAY 5 CAPSTONE VERIFICATION TEST SUITE (10/10)")
+        print("🏆 EXECUTING WEEK 2 DAY 5 CAPSTONE VERIFICATION TEST SUITE")
         print("=" * 75)
 
     def test_01_task1_system_design(self):
@@ -54,7 +54,7 @@ class TestWeek2Day5Capstone(unittest.TestCase):
         # Verify LangGraph graph compiles cleanly
         graph = build_onboarding_graph()
         self.assertIsNotNone(graph)
-        print("[TEST 1 PASSED] Task 1: System Design, State Graph & Catalog Verified (10/10)")
+        print("[TEST 1 PASSED] Task 1: System Design, State Graph & Catalog Verified")
 
     def test_02_task2_tools_and_failure_handling(self):
         """Verify Task 2: Component reuse, AST calculator, HITL gate, and failure handling."""
@@ -96,7 +96,7 @@ class TestWeek2Day5Capstone(unittest.TestCase):
         self.assertTrue(res_hitl["is_valid"])
         self.assertTrue(res_hitl["human_approval_required"])
         self.assertTrue(res_hitl["contract_dispatched"])
-        print("[TEST 2 PASSED] Task 2: End-to-End System, AST Tools & Failure Paths Verified (10/10)")
+        print("[TEST 2 PASSED] Task 2: End-to-End System, AST Tools & Failure Paths Verified")
 
     def test_03_task3_evaluation_suite(self):
         """Verify Task 3: 8 test cases execution, 5 criteria scoring, and failure fix."""
@@ -113,7 +113,7 @@ class TestWeek2Day5Capstone(unittest.TestCase):
             scorecard = evaluate_run(tc, run_res)
             self.assertEqual(scorecard["composite_score"], 10.0, f"{tc['id']} failed scoring.")
 
-        print("[TEST 3 PASSED] Task 3: Evaluation Suite & 8 Test Cases Scored 10/10 (10/10)")
+        print("[TEST 3 PASSED] Task 3: Evaluation Suite & 8 Test Cases Passed")
 
     def test_04_task4_fastapi_endpoints(self):
         """Verify Task 4: FastAPI REST endpoints, middleware, and HITL approvals."""
@@ -155,7 +155,7 @@ class TestWeek2Day5Capstone(unittest.TestCase):
         r_metrics = client.get("/api/v1/metrics")
         self.assertEqual(r_metrics.status_code, 200)
         self.assertIn("total_requests", r_metrics.json())
-        print("[TEST 4 PASSED] Task 4: FastAPI Endpoints, Middleware & Monitoring Verified (10/10)")
+        print("[TEST 4 PASSED] Task 4: FastAPI Endpoints, Middleware & Monitoring Verified")
 
     def test_05_task5_deliverables_and_pdf(self):
         """Verify Task 5: 2-page publication PDF, presentation outline, and task markdown files."""
@@ -180,7 +180,7 @@ class TestWeek2Day5Capstone(unittest.TestCase):
             self.assertTrue(p.exists(), f"Missing markdown documentation: {md_name}")
             self.assertGreater(p.stat().st_size, 500, f"Markdown file {md_name} is too short.")
 
-        print("[TEST 5 PASSED] Task 5: 2-Page Executive PDF & Markdown Documentation Verified (10/10)")
+        print("[TEST 5 PASSED] Task 5: 2-Page Executive PDF & Markdown Documentation Verified")
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ In high-growth Web3 consulting firms, scoping inbound technical inquiries and fo
 
 ### 3. Evaluation Highlights
 * **Task Success Rate:** **100% (8 / 8)** across varied enterprise and adversarial scenarios.
-* **Mathematical Accuracy:** **10/10** (Zero delta between individual milestones and total contract commitments).
+* **Mathematical Accuracy:** **100%** (Zero delta between individual milestones and total contract commitments).
 * **Average Latency:** **0.92 seconds** per transaction.
 * **Cost Efficiency:** **$0.000199 USD** per proposal (Over 1,000 proposals generated for under $0.20 on Gemini Flash).
 
@@ -53,7 +53,7 @@ In high-growth Web3 consulting firms, scoping inbound technical inquiries and fo
 * **Visual:** Evaluation Results Table (8 Test Cases).
 * **Key Metrics to Highlight:**
   * **Success Rate:** 100% across 8 production runs.
-  * **Zero Hallucination:** 10/10 math precision (AST evaluated).
+  * **Zero Hallucination:** 100% math precision (AST evaluated).
   * **Turnaround Speed:** 0.92s average latency (vs. 48 hours human turnaround).
   * **Operating Cost:** Under $0.0002 per proposal (~$0.20 per 1,000 proposals).
 * **Adversarial Defense:** Successfully neutralized prompt injection attempts without system prompt leakage.

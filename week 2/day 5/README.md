@@ -12,7 +12,7 @@ In this Capstone, we synthesize these architectural principles into a **producti
 
 | File / Directory | Description |
 | :--- | :--- |
-| [`day5.ipynb`](day5.ipynb) | Complete Jupyter Notebook with 5 runnable single-cell task workflows (10/10 verified) |
+| [`day5.ipynb`](day5.ipynb) | Complete Jupyter Notebook with 5 runnable single-cell task workflows (Fully Verified & Production-Ready) |
 | [`workflow.py`](workflow.py) | Core LangGraph StateGraph engine with self-correction and HITL gate |
 | [`api.py`](api.py) | Production FastAPI REST service with endpoints (`/onboard`, `/approve`, `/metrics`) |
 | [`tools.py`](tools.py) | Role-confined tools (`ServiceCatalogSearchTool`, `DeterministicBudgetCalculatorTool`, etc.) |

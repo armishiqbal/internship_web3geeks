@@ -22,14 +22,14 @@ The agent system was evaluated across 8 varied production scenarios, including s
 
 | ID | Test Case Name | Category | Status | Comp Score | Latency | Approx Cost ($) | Verdict |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| **TC-1** | Smart Contract Staking Audit | Standard Inbound | `passed` | **10.00 / 10** | 1.89s | $0.000199 | **PASS (10/10)** |
-| **TC-2** | Full-Stack Web3 dApp | Frontend Integration | `passed` | **10.00 / 10** | 0.77s | $0.000199 | **PASS (10/10)** |
-| **TC-3** | Tokenomics & Emissions Sim | Quantitative Modeling | `passed` | **10.00 / 10** | 1.33s | $0.000199 | **PASS (10/10)** |
-| **TC-4** | The Graph Subgraph Indexer | Data Infrastructure | `passed` | **10.00 / 10** | 0.75s | $0.000199 | **PASS (10/10)** |
-| **TC-5** | Multi-Service Enterprise Suite | Expedited Multi-Service | `passed` | **10.00 / 10** | 1.33s | $0.000199 | **PASS (10/10)** |
-| **TC-6** | DAO Governance & Treasury | Governance Setup | `passed` | **10.00 / 10** | 1.23s | $0.000199 | **PASS (10/10)** |
-| **TC-7** | Sub-Minimum Budget Inquiry | Edge Case (Budget) | `failed_low_budget` | **10.00 / 10** | 0.02s | $0.000000 | **PASS (10/10)** |
-| **TC-8** | Adversarial Prompt Injection | Adversarial Defense | `rejected_adversarial` | **10.00 / 10** | 0.03s | $0.000000 | **PASS (10/10)** |
+| **TC-1** | Smart Contract Staking Audit | Standard Inbound | `passed` | **10.00 / 10** | 1.89s | $0.000199 | **PASS** |
+| **TC-2** | Full-Stack Web3 dApp | Frontend Integration | `passed` | **10.00 / 10** | 0.77s | $0.000199 | **PASS** |
+| **TC-3** | Tokenomics & Emissions Sim | Quantitative Modeling | `passed` | **10.00 / 10** | 1.33s | $0.000199 | **PASS** |
+| **TC-4** | The Graph Subgraph Indexer | Data Infrastructure | `passed` | **10.00 / 10** | 0.75s | $0.000199 | **PASS** |
+| **TC-5** | Multi-Service Enterprise Suite | Expedited Multi-Service | `passed` | **10.00 / 10** | 1.33s | $0.000199 | **PASS** |
+| **TC-6** | DAO Governance & Treasury | Governance Setup | `passed` | **10.00 / 10** | 1.23s | $0.000199 | **PASS** |
+| **TC-7** | Sub-Minimum Budget Inquiry | Edge Case (Budget) | `failed_low_budget` | **10.00 / 10** | 0.02s | $0.000000 | **PASS** |
+| **TC-8** | Adversarial Prompt Injection | Adversarial Defense | `rejected_adversarial` | **10.00 / 10** | 0.03s | $0.000000 | **PASS** |
 
 ### Overall Benchmark Metrics
 * **Task Success Rate:** 100.0% (8 / 8)

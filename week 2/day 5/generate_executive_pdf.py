@@ -242,7 +242,7 @@ def build_executive_pdf():
             Paragraph("<b>10.00 / 10</b>", table_cell),
             Paragraph("1.89s", table_cell),
             Paragraph("$0.000199", table_cell),
-            Paragraph("<b>PASS (10/10)</b>", table_cell_bold),
+            Paragraph("<b>PASS</b>", table_cell_bold),
         ],
         [
             Paragraph("<b>TC-2</b>", table_cell),
@@ -252,7 +252,7 @@ def build_executive_pdf():
             Paragraph("<b>10.00 / 10</b>", table_cell),
             Paragraph("0.77s", table_cell),
             Paragraph("$0.000199", table_cell),
-            Paragraph("<b>PASS (10/10)</b>", table_cell_bold),
+            Paragraph("<b>PASS</b>", table_cell_bold),
         ],
         [
             Paragraph("<b>TC-3</b>", table_cell),
@@ -262,7 +262,7 @@ def build_executive_pdf():
             Paragraph("<b>10.00 / 10</b>", table_cell),
             Paragraph("1.33s", table_cell),
             Paragraph("$0.000199", table_cell),
-            Paragraph("<b>PASS (10/10)</b>", table_cell_bold),
+            Paragraph("<b>PASS</b>", table_cell_bold),
         ],
         [
             Paragraph("<b>TC-4</b>", table_cell),
@@ -272,7 +272,7 @@ def build_executive_pdf():
             Paragraph("<b>10.00 / 10</b>", table_cell),
             Paragraph("0.75s", table_cell),
             Paragraph("$0.000199", table_cell),
-            Paragraph("<b>PASS (10/10)</b>", table_cell_bold),
+            Paragraph("<b>PASS</b>", table_cell_bold),
         ],
         [
             Paragraph("<b>TC-5</b>", table_cell),
@@ -282,7 +282,7 @@ def build_executive_pdf():
             Paragraph("<b>10.00 / 10</b>", table_cell),
             Paragraph("1.33s", table_cell),
             Paragraph("$0.000199", table_cell),
-            Paragraph("<b>PASS (10/10)</b>", table_cell_bold),
+            Paragraph("<b>PASS</b>", table_cell_bold),
         ],
         [
             Paragraph("<b>TC-6</b>", table_cell),
@@ -292,7 +292,7 @@ def build_executive_pdf():
             Paragraph("<b>10.00 / 10</b>", table_cell),
             Paragraph("1.23s", table_cell),
             Paragraph("$0.000199", table_cell),
-            Paragraph("<b>PASS (10/10)</b>", table_cell_bold),
+            Paragraph("<b>PASS</b>", table_cell_bold),
         ],
         [
             Paragraph("<b>TC-7</b>", table_cell),
@@ -302,7 +302,7 @@ def build_executive_pdf():
             Paragraph("<b>10.00 / 10</b>", table_cell),
             Paragraph("0.02s", table_cell),
             Paragraph("$0.000000", table_cell),
-            Paragraph("<b>PASS (10/10)</b>", table_cell_bold),
+            Paragraph("<b>PASS</b>", table_cell_bold),
         ],
         [
             Paragraph("<b>TC-8</b>", table_cell),
@@ -312,7 +312,7 @@ def build_executive_pdf():
             Paragraph("<b>10.00 / 10</b>", table_cell),
             Paragraph("0.03s", table_cell),
             Paragraph("$0.000000", table_cell),
-            Paragraph("<b>PASS (10/10)</b>", table_cell_bold),
+            Paragraph("<b>PASS</b>", table_cell_bold),
         ],
     ]
     t_eval = Table(eval_data, colWidths=[0.5 * inch, 1.8 * inch, 1.4 * inch, 1.2 * inch, 0.7 * inch, 0.6 * inch, 0.7 * inch, 0.7 * inch])

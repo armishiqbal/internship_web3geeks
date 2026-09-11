@@ -199,7 +199,7 @@ def run_full_evaluation() -> List[Dict[str, Any]]:
     print("-" * 85)
 
     for r in results:
-        verdict = "PASS (10/10)" if r["composite_score"] >= 9.5 else "PASS"
+        verdict = "PASS" if r["composite_score"] >= 9.5 else "PASS"
         print(f"{r['id']:<6} | {r['name'][:28]:<28} | {r['status']:<14} | {r['composite_score']:<6.2f} | {r['latency_sec']:<6.2f}s | ${r['cost_usd']:<8.6f} | {verdict}")
 
     avg_score = sum(r["composite_score"] for r in results) / len(results)
