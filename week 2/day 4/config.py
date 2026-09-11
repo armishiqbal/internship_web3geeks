@@ -2,8 +2,28 @@
 
 from __future__ import annotations
 
+import logging
 import os
 from pathlib import Path
+import warnings
+
+# Suppress harmless dual-key and internal SDK telemetry warnings
+for _logger_name in (
+    "google_genai._api_client",
+    "google.genai._api_client",
+    "google_genai.models",
+    "google.genai.models",
+):
+    logging.getLogger(_logger_name).setLevel(logging.ERROR)
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", message=".*Both GOOGLE_API_KEY and GEMINI_API_KEY are set.*")
+
+try:
+    from crewai.events.listeners.tracing.utils import set_suppress_tracing_messages
+    set_suppress_tracing_messages(True)
+except Exception:
+    pass
 
 HERE = Path(__file__).resolve().parent
 DAY3_ENV = HERE.parent / "day 3" / ".env"
@@ -58,6 +78,14 @@ def build_crew_llm(model_name: str | None = None, temperature: float = 0.2):
     # Ensure environment variables are set for LiteLLM / CrewAI
     os.environ["GEMINI_API_KEY"] = key
     os.environ["GOOGLE_API_KEY"] = key
+
+    for _logger_name in (
+        "google_genai._api_client",
+        "google.genai._api_client",
+        "google_genai.models",
+        "google.genai.models",
+    ):
+        logging.getLogger(_logger_name).setLevel(logging.ERROR)
     
     target_model = model_name or default_model()
     # Format for LiteLLM provider

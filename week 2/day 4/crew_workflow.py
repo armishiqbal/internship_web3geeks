@@ -6,8 +6,28 @@ import argparse
 import asyncio
 import sys
 import time
+import logging
 from pathlib import Path
 from typing import Any, Dict
+import warnings
+
+# Suppress harmless internal SDK warnings and notices
+for _logger_name in (
+    "google_genai._api_client",
+    "google.genai._api_client",
+    "google_genai.models",
+    "google.genai.models",
+):
+    logging.getLogger(_logger_name).setLevel(logging.ERROR)
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", message=".*Both GOOGLE_API_KEY and GEMINI_API_KEY are set.*")
+
+try:
+    from crewai.events.listeners.tracing.utils import set_suppress_tracing_messages
+    set_suppress_tracing_messages(True)
+except Exception:
+    pass
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -158,7 +178,7 @@ def create_tasks(
         expected_output=(
             f"# Executive Competitive Battlecard: Countering {competitor.title()}\n\n"
             "## 1. Executive Intelligence Summary\n"
-            "## 2. Quantitative TCO Analysis\n"
+            "## 2. Quantitative Total Cost of Ownership (TCO) Analysis\n"
             "## 3. Documented Competitive Weaknesses\n"
             "## 4. Strategic Sales Counter-Angles\n"
             "## 5. Objection Handling\n"

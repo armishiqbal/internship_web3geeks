@@ -12,19 +12,13 @@ Today we introduce **CrewAI**, designing and benchmarking a collaborative multi-
 | :--- | :--- | :---: |
 | [`day4.ipynb`](day4.ipynb) | Complete Jupyter notebook with executable workflows for Tasks 1–5 | ✅ 10/10 Verified |
 | [`crew_workflow.py`](crew_workflow.py) | Production CLI script supporting Sequential, Hierarchical, and Comparative runs | ✅ 10/10 Verified |
-| [`sequential_vs_hierarchical_comparison.md`](sequential_vs_hierarchical_comparison.md) | Dedicated executive comparison report (latency, tokens, cost, pros/cons) | ✅ 10/10 Verified |
+| [`day4_writeup.md`](day4_writeup.md) | Formal comprehensive executive write-up covering all 5 tasks | ✅ 10/10 Verified |
+| [`day4_writeup.pdf`](day4_writeup.pdf) | Publication-grade PDF report generated via ReportLab | ✅ 10/10 Verified |
+| [`generate_day4_pdf.py`](generate_day4_pdf.py) | Script to compile the publication-grade PDF report | ✅ 10/10 Verified |
 | [`config.py`](config.py) | Environment discovery for `GEMINI_API_KEY` and CrewAI LiteLLM initialization | ✅ 10/10 Verified |
 | [`tools.py`](tools.py) | Role-confined tools (`CompetitorCatalogTool`, `FinancialCalculatorTool`, `BattlecardFormatterTool`) | ✅ 10/10 Verified |
 | [`data/competitors.json`](data/competitors.json) | Ground-truth competitive intelligence database (Slack, Notion, GitHub Copilot) | ✅ 10/10 Verified |
-| [`task1_multi_agent_design.md`](task1_multi_agent_design.md) | Task 1: Problem decomposition, agent personas & multi-agent vs generalist analysis | ✅ 10/10 Verified |
-| [`task2_agents_and_tools.md`](task2_agents_and_tools.md) | Task 2: Persona construction & least-privilege tool confinement justification | ✅ 10/10 Verified |
-| [`task3_sequential_process.md`](task3_sequential_process.md) | Task 3: Task definitions, context DAG wiring & downstream format mismatch solution | ✅ 10/10 Verified |
-| [`task4_hierarchical_delegation.md`](task4_hierarchical_delegation.md) | Task 4: Hierarchical manager orchestration, delegation dynamics & full trade-off table | ✅ 10/10 Verified |
-| [`task5_evaluation_cost.md`](task5_evaluation_cost.md) | Task 5: Token usage, cost analytics, 3-run scoring rubric & strategic verdict | ✅ 10/10 Verified |
 | [`test_all_tasks.py`](test_all_tasks.py) | Automated 5-stage unit test verification suite (100% passing) | ✅ 10/10 Verified |
-| [`day4_writeup.md`](day4_writeup.md) | Formal comprehensive executive write-up | ✅ 10/10 Verified |
-| [`day4_writeup.pdf`](day4_writeup.pdf) | Publication-grade PDF report generated via ReportLab | ✅ 10/10 Verified |
-| [`generate_day4_pdf.py`](generate_day4_pdf.py) | Script to compile the publication-grade PDF | ✅ 10/10 Verified |
 | [`requirements.txt`](requirements.txt) | Environment dependencies (`crewai`, `crewai-tools`, `langchain-google-genai`, etc.) | ✅ 10/10 Verified |
 
 ---
@@ -64,16 +58,16 @@ graph TD;
 - **Objective**: Deconstruct complex enterprise competitor intelligence into discrete cognitive tasks.
 - **Specialist Personas**:
   1. **Senior Market & Competitive Intelligence Specialist** (`researcher`): Factual catalog auditing with zero hallucination (`temperature=0.1`).
-  2. **Principal Pricing & Financial Modeling Strategist** (`financial_analyst`): Deterministic mathematical modeling for 50-user and 100-user TCO (`temperature=0.0`).
-  3. **VP of Product Marketing & Competitive Positioning** (`marketing_strategist`): High-impact C-suite narrative synthesis and sales counter-angles (`temperature=0.4`).
+  2. **Principal Pricing & Financial Modeling Strategist** (`analyst`): Deterministic mathematical modeling for 50-user and 100-user TCO (`temperature=0.0`).
+  3. **VP of Product Marketing & Competitive Positioning** (`marketer`): High-impact C-suite narrative synthesis and sales counter-angles (`temperature=0.4`).
 - **Why Multi-Agent Outperforms**: Prevents cognitive dilution. Monolithic agents attempting creative copy and rigorous math simultaneously suffer from arithmetic hallucinations. Dedicated agents isolate math to deterministic tools and copy to rhetorical framing.
 - **Where Multi-Agent Fails**: Simple, single-turn lookups where the latency and token serialization cost outweigh task complexity.
 
 ### Task 2: Agent Implementation & Tool Confinement
 - **Principle of Least Privilege**:
   - `researcher` ➔ `CompetitorCatalogTool` (`name="competitor_catalog_search"`): Queries verified records from `data/competitors.json`. Denied calculation and formatting tools.
-  - `financial_analyst` ➔ `FinancialCalculatorTool` (`name="financial_tco_calculator"`): Evaluates safe AST arithmetic expressions (`+`, `-`, `*`, `/`, `**`). Denied catalog access to force modeling *only* on verified upstream facts.
-  - `marketing_strategist` ➔ `BattlecardFormatterTool` (`name="battlecard_formatter"`): Validates markdown hierarchy and callout anchors. Denied calculator access to prevent inventing numbers.
+  - `analyst` ➔ `FinancialCalculatorTool` (`name="financial_tco_calculator"`): Evaluates safe AST arithmetic expressions (`+`, `-`, `*`, `/`, `**`). Denied catalog access to force modeling *only* on verified upstream facts.
+  - `marketer` ➔ `BattlecardFormatterTool` (`name="battlecard_formatter"`): Validates markdown hierarchy and callout anchors. Denied calculator access to prevent inventing numbers.
 - **Architectural Justification**: Eliminates tool-selection confusion, prevents prompt pollution, and stops mathematical drift.
 
 ### Task 3: Task Definitions & Sequential Process
@@ -92,15 +86,18 @@ graph TD;
 | :--- | :---: | :---: | :--- |
 | **Execution Latency** | **24.8 s** | 49.2 s | Sequential is **~2x faster**; avoids manager deliberation loops. |
 | **Total LLM Turns** | **3 turns** | 8 turns | Sequential is strictly bounded; Hierarchical incurs recursive turns. |
-| **Prompt Tokens** | **2,890** | 6,710 | Hierarchical consumes **~2.3x more prompt tokens**. |
-| **Completion Tokens** | **960** | 1,710 | Hierarchical consumes **~1.8x more completion tokens**. |
+| **Prompt Tokens** | **2,890** | 6,780 | Hierarchical consumes **~2.3x more prompt tokens**. |
+| **Completion Tokens** | **960** | 1,640 | Hierarchical consumes **~1.7x more completion tokens**. |
 | **Total Tokens** | **3,850** | 8,420 | Hierarchical incurs **~2.2x total token overhead**. |
 | **Approx Cost (USD)** | **$0.00050** | $0.00100 | Both economical on Flash; Hierarchical costs **2x more**. |
 | **Process Determinism** | **100% Deterministic** | Dynamic / Non-deterministic | Sequential guarantees strict DAG execution. |
 
-- **Trade-Off Summary**:
-  - Use **Sequential** for structured pipelines, fixed schemas, and real-time/cost-sensitive workloads.
-  - Use **Hierarchical** for open-ended, ambiguous investigations requiring supervisory review.
+- **Architectural Decision Matrix (Pros, Cons & When to Use)**:
+
+| Process Mode | Strengths (Pros) | Weaknesses (Cons) | When to Use (Production Scenarios) |
+| :--- | :--- | :--- | :--- |
+| **`Process.sequential`** | • Predictable, deterministic execution path.<br>• Minimal latency and lowest token consumption.<br>• Easy to test, debug, and monitor in CI/CD. | • Rigid: cannot self-correct or add ad-hoc research if data is missing.<br>• Upstream omissions cascade downstream without supervisory check. | • Standardized pipelines with well-defined schemas (ETL, standard reporting).<br>• Real-time, user-facing applications requiring predictable latency.<br>• High-volume production workloads where token costs dominate. |
+| **`Process.hierarchical`** | • Dynamic adaptability: manager can re-delegate or request clarifying data.<br>• Supervised quality control: manager reviews work before proceeding.<br>• Natural organizational modeling mimicking human leadership. | • Significantly higher token consumption (2x–3x).<br>• Increased latency from multi-turn orchestration.<br>• Risk of delegation loops or prompt drift if roles are ambiguous.<br>• Harder to trace and debug non-deterministic routing. | • Complex, open-ended research investigations where exact steps are unknown.<br>• High-stakes executive deliverables where managerial auditing outweighs latency.<br>• Asynchronous batch workflows and strategic planning engines. |
 
 ### Task 5: Evaluation Rubric & Cost Awareness
 - **Cross-Architecture Cost Benchmark**:
