@@ -8,18 +8,20 @@ Today we introduce **CrewAI**, designing and benchmarking a collaborative multi-
 
 ## Deliverables & File Layout
 
-| File | Description | Status |
-| :--- | :--- | :---: |
-| [`day4.ipynb`](day4.ipynb) | Complete Jupyter notebook with executable workflows for Tasks 1–5 | ✅ 10/10 Verified |
-| [`crew_workflow.py`](crew_workflow.py) | Production CLI script supporting Sequential, Hierarchical, and Comparative runs | ✅ 10/10 Verified |
-| [`day4_writeup.md`](day4_writeup.md) | Formal comprehensive executive write-up covering all 5 tasks | ✅ 10/10 Verified |
-| [`day4_writeup.pdf`](day4_writeup.pdf) | Publication-grade PDF report generated via ReportLab | ✅ 10/10 Verified |
-| [`generate_day4_pdf.py`](generate_day4_pdf.py) | Script to compile the publication-grade PDF report | ✅ 10/10 Verified |
-| [`config.py`](config.py) | Environment discovery for `GEMINI_API_KEY` and CrewAI LiteLLM initialization | ✅ 10/10 Verified |
-| [`tools.py`](tools.py) | Role-confined tools (`CompetitorCatalogTool`, `FinancialCalculatorTool`, `BattlecardFormatterTool`) | ✅ 10/10 Verified |
-| [`data/competitors.json`](data/competitors.json) | Ground-truth competitive intelligence database (Slack, Notion, GitHub Copilot) | ✅ 10/10 Verified |
-| [`test_all_tasks.py`](test_all_tasks.py) | Automated 5-stage unit test verification suite (100% passing) | ✅ 10/10 Verified |
-| [`requirements.txt`](requirements.txt) | Environment dependencies (`crewai`, `crewai-tools`, `langchain-google-genai`, etc.) | ✅ 10/10 Verified |
+| File | Description |
+| :--- | :--- |
+| [`day4.ipynb`](day4.ipynb) | Complete Jupyter notebook with executable workflows for Tasks 1–5 |
+| [`crew_workflow.py`](crew_workflow.py) | Production CLI script supporting Sequential, Hierarchical, and Comparative runs |
+| [`day4_writeup.md`](day4_writeup.md) | Formal comprehensive executive write-up covering all 5 tasks |
+| [`day4_writeup.pdf`](day4_writeup.pdf) | Publication-grade PDF report generated via ReportLab |
+| [`generate_day4_pdf.py`](generate_day4_pdf.py) | Script to compile the publication-grade PDF report |
+| [`generate_diagram.py`](generate_diagram.py) | Script to generate the high-resolution workflow architecture diagram |
+| [`workflow_architecture.png`](workflow_architecture.png) | High-resolution diagram of Sequential & Hierarchical workflows |
+| [`config.py`](config.py) | Environment discovery for `GEMINI_API_KEY` and CrewAI LiteLLM initialization |
+| [`tools.py`](tools.py) | Role-confined tools (`CompetitorCatalogTool`, `FinancialCalculatorTool`, `BattlecardFormatterTool`) |
+| [`data/competitors.json`](data/competitors.json) | Ground-truth competitive intelligence database (Slack, Notion, GitHub Copilot) |
+| [`test_all_tasks.py`](test_all_tasks.py) | Automated 5-stage unit test verification suite (100% passing) |
+| [`requirements.txt`](requirements.txt) | Environment dependencies (`crewai`, `crewai-tools`, `langchain-google-genai`, etc.) |
 
 ---
 
@@ -27,27 +29,76 @@ Today we introduce **CrewAI**, designing and benchmarking a collaborative multi-
 
 The multi-agent crew executes an **Autonomous SaaS Competitor Intelligence, Quantitative TCO Modeling & Go-to-Market Strategy** pipeline:
 
-```mermaid
-graph TD;
-    User[User Request: Analyze Competitor] --> ModeSelect{Process Mode};
-    
-    subgraph Sequential Pipeline [Process.sequential]
-        ModeSelect -->|Sequential| Researcher[1. Senior Market Researcher<br/><i>Tool: competitor_catalog_search</i>];
-        Researcher -->|Structured Pricing Matrix| Analyst[2. Financial & TCO Strategist<br/><i>Tool: financial_tco_calculator</i>];
-        Analyst -->|Exact TCO & Discount Math| Marketer[3. VP Product Marketing<br/><i>Tool: battlecard_formatter</i>];
-        Marketer --> SeqOutput[Final Executive Sales Battlecard];
-    end
+![CrewAI Multi-Agent Workflow Architecture](workflow_architecture.png)
 
-    subgraph Hierarchical Delegation [Process.hierarchical]
-        ModeSelect -->|Hierarchical| Manager[Manager: Director of Market Strategy];
-        Manager -. 1. Delegate Audit .-> H_Researcher[Researcher Agent];
-        H_Researcher -. Catalog Data .-> Manager;
-        Manager -. 2. Delegate Math .-> H_Analyst[Analyst Agent];
-        H_Analyst -. TCO Math .-> Manager;
-        Manager -. 3. Delegate Strategy .-> H_Marketer[Marketer Agent];
-        H_Marketer -. Battlecard Draft .-> Manager;
-        Manager -->|Quality Audit & Sign-off| HierOutput[Final Synthesized Executive Brief];
-    end
+```text
+========================================================================================================
+                                     CREWAI WORKFLOW ARCHITECTURE
+========================================================================================================
+
+1. SEQUENTIAL PIPELINE (Process.sequential) — Deterministic Linear DAG Handoffs
+--------------------------------------------------------------------------------------------------------
+ [User Query]
+      │
+      ▼ (Target Competitor: Slack)
+ ┌──────────────────────────────────────┐
+ │ 1. Senior Market Researcher          │
+ │ • Role: Factual Catalog Auditing     │
+ │ • LLM Temp: 0.1                      │
+ │ • Tool: competitor_catalog_search    │
+ └──────────────────┬───────────────────┘
+                    │
+                    ▼  (Structured Markdown Pricing Matrix)
+ ┌──────────────────────────────────────┐
+ │ 2. Principal Financial Analyst       │
+ │ • Role: Multi-Tier TCO Modeling      │
+ │ • LLM Temp: 0.0                      │
+ │ • Tool: financial_tco_calculator     │
+ └──────────────────┬───────────────────┘
+                    │
+                    ▼  (Exact TCO Arithmetic & Discount Proofs)
+ ┌──────────────────────────────────────┐
+ │ 3. VP Product Marketing              │
+ │ • Role: Strategic Framing & Angles   │
+ │ • LLM Temp: 0.4                      │
+ │ • Tool: battlecard_formatter         │
+ └──────────────────┬───────────────────┘
+                    │
+                    ▼  (Validated Markdown Hierarchy)
+ ┌────────────────────────────────────────────────────────────────────────┐
+ │ Final Executive Sales Battlecard                                       │
+ │ • Section 1: Executive Intelligence Summary                            │
+ │ • Section 2: Quantitative Total Cost of Ownership (TCO) Analysis       │
+ │ • Section 3: Strategic Sales Counter-Angles & Objection Playbook       │
+ └────────────────────────────────────────────────────────────────────────┘
+
+--------------------------------------------------------------------------------------------------------
+2. HIERARCHICAL DELEGATION (Process.hierarchical) — Dynamic Supervisory Management
+--------------------------------------------------------------------------------------------------------
+                                ┌────────────────────────────────────────────────────────┐
+                                │ Director of Market Strategy & Research Operations      │
+                                │ (Manager Agent: allow_delegation=True)                 │
+                                └───────┬───────────────────┬────────────────────┬───────┘
+                                        │                   │                    │
+            ┌───────────────────────────┘                   │                    └───────────────────────────┐
+            │ 1. Delegate Audit                             │ 2. Delegate Math                               │ 3. Delegate Framing
+            ▼ (Returns Catalog Data)                        ▼ (Returns TCO Calculations)                     ▼ (Returns Draft)
+ ┌──────────────────────────────────────┐  ┌──────────────────────────────────────┐  ┌──────────────────────────────────────┐
+ │ Researcher Agent                     │  │ Financial Analyst Agent              │  │ Marketer Agent                       │
+ │ • Tool: competitor_catalog_search    │  │ • Tool: financial_tco_calculator     │  │ • Tool: battlecard_formatter         │
+ │ • allow_delegation: True             │  │ • allow_delegation: True             │  │ • allow_delegation: True             │
+ └──────────────────────────────────────┘  └──────────────────────────────────────┘  └──────────────────────────────────────┘
+                                        ▲                   ▲                    ▲
+                                        │                   │                    │
+                                        └───────────────────┴────────────────────┘
+                                                            │
+                                            (Manager Quality Review & Sign-Off)
+                                                            ▼
+                                        ┌────────────────────────────────────────┐
+                                        │ Final Synthesized Executive Brief      │
+                                        │ (Audited C-Suite Intelligence Report)  │
+                                        └────────────────────────────────────────┘
+========================================================================================================
 ```
 
 ---
