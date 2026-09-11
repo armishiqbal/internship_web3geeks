@@ -1,0 +1,98 @@
+{
+  "agency": "Web3Geeks",
+  "version": "2026.1",
+  "currency": "USD",
+  "minimum_project_budget": 3500.0,
+  "services": {
+    "smart_contracts": {
+      "name": "Smart Contract Architecture & Security Audit",
+      "category": "Blockchain Engineering",
+      "hourly_rate": 150.0,
+      "base_price": 6000.0,
+      "estimated_days": 14,
+      "tech_stack": ["Solidity", "Foundry", "Hardhat", "Slither", "OpenZeppelin"],
+      "deliverables": [
+        "Gas-optimized smart contract suite",
+        "100% unit test coverage in Foundry",
+        "Formal static analysis security report",
+        "Testnet deployment and multi-sig ownership transfer"
+      ],
+      "maintenance_monthly_fee": 800.0
+    },
+    "dapp_fullstack": {
+      "name": "Full-Stack Web3 dApp Development",
+      "category": "Frontend & Integration",
+      "hourly_rate": 130.0,
+      "base_price": 8500.0,
+      "estimated_days": 21,
+      "tech_stack": ["Next.js", "React", "TypeScript", "Wagmi", "Viem", "TailwindCSS"],
+      "deliverables": [
+        "Responsive wallet connection (RainbowKit/Web3Modal)",
+        "Contract interaction state management",
+        "Transaction lifecycle notifications & event indexers",
+        "Vercel production deployment pipeline"
+      ],
+      "maintenance_monthly_fee": 1000.0
+    },
+    "defi_tokenomics": {
+      "name": "DeFi Protocol & Tokenomics Modeling",
+      "category": "Quantitative Tokenomics",
+      "hourly_rate": 175.0,
+      "base_price": 5500.0,
+      "estimated_days": 14,
+      "tech_stack": ["Python", "CadCAD", "Jupyter", "LaTeX"],
+      "deliverables": [
+        "Mathematical emissions & inflation schedule",
+        "Staking rewards and liquidity pool simulations",
+        "Vesting contract architecture",
+        "Executive Tokenomics Whitepaper"
+      ],
+      "maintenance_monthly_fee": 600.0
+    },
+    "infra_subgraphs": {
+      "name": "The Graph Subgraph & Indexer Infrastructure",
+      "category": "Data & Infrastructure",
+      "hourly_rate": 120.0,
+      "base_price": 4000.0,
+      "estimated_days": 10,
+      "tech_stack": ["The Graph", "AssemblyScript", "GraphQL", "Chainlink Oracles"],
+      "deliverables": [
+        "Custom GraphQL schema definition",
+        "AssemblyScript mapping handlers",
+        "Hosted Service / Subgraph Studio deployment",
+        "Real-time historical query benchmarking"
+      ],
+      "maintenance_monthly_fee": 500.0
+    },
+    "dao_governance": {
+      "name": "DAO Governance & Multi-Sig Treasury Architecture",
+      "category": "Decentralized Governance",
+      "hourly_rate": 140.0,
+      "base_price": 5000.0,
+      "estimated_days": 12,
+      "tech_stack": ["OpenZeppelin Governor", "Safe (Gnosis)", "Snapshot", "Tally"],
+      "deliverables": [
+        "Timelock controller & proposal lifecycle configuration",
+        "Gasless Snapshot voting strategy integration",
+        "Gnosis Safe multi-sig treasury setup",
+        "Community governance playbook"
+      ],
+      "maintenance_monthly_fee": 700.0
+    }
+  },
+  "sla_tiers": {
+    "standard": {
+      "turnaround_multiplier": 1.0,
+      "concurrency_limit": 2,
+      "support_hours": "Business hours (5x8)",
+      "uptime_guarantee": "99.0%"
+    },
+    "expedited": {
+      "turnaround_multiplier": 0.7,
+      "concurrency_limit": 4,
+      "support_hours": "24/7 Slack channel support",
+      "uptime_guarantee": "99.9%",
+      "rush_fee_percentage": 25.0
+    }
+  }
+}
