@@ -24,8 +24,6 @@ In this Capstone, we synthesize these architectural principles into a **producti
 | [`day5_executive_report.pdf`](day5_executive_report.pdf) | Publication-grade 2-page C-Suite executive report generated via ReportLab |
 | [`generate_executive_pdf.py`](generate_executive_pdf.py) | Script to compile the publication-grade 2-page PDF report |
 | [`generate_diagram.py`](generate_diagram.py) | Script to generate the high-resolution architecture diagram |
-| [`build_day5_notebook.py`](build_day5_notebook.py) | Programmatic builder for `day5.ipynb` ensuring single-cell-per-task architecture |
-| [`run_and_save_notebook.py`](run_and_save_notebook.py) | Headless notebook execution engine capturing verified stdout streams |
 | [`task1_system_design.md`](task1_system_design.md) | Comprehensive Task 1 documentation: System design, use case & architecture |
 | [`task2_end_to_end_system.md`](task2_end_to_end_system.md) | Comprehensive Task 2 documentation: StateGraph, AST tools, HITL & failure defense |
 | [`task3_evaluation_framework.md`](task3_evaluation_framework.md) | Comprehensive Task 3 documentation: 5 criteria, 8 test cases & failure analysis |
