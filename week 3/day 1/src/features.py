@@ -203,6 +203,7 @@ def build_match_features(raw_tm_df: pd.DataFrame) -> pd.DataFrame:
     mf['home_team_win'] = (match_features['team_score_home'] > match_features['team_score_away']).astype(int)
     mf['is_draw'] = (match_features['team_score_home'] == match_features['team_score_away']).astype(int)
     mf['total_match_score'] = match_features['team_score_home'] + match_features['team_score_away']
+    mf['margin'] = mf['home_margin']
 
     # ROLLING FORM FEATURES
     mf['home_win_streak'] = match_features['win_streak_home']
@@ -418,8 +419,249 @@ def build_player_match_features(
         'player_fantasy_points_clean_roll3': 'player_roll3_fantasy',
         'player_fantasy_points_clean_roll5': 'player_roll5_fantasy'
     })
+
+    # Shorthand aliases for validation checks and downstream models
+    pf['roll_disposals_3'] = pf['player_roll3_disposals']
+    pf['roll_disposals_5'] = pf['player_roll5_disposals']
+    pf['roll_goals_3'] = pf['player_roll3_goals']
+    pf['roll_goals_5'] = pf['player_roll5_goals']
+    pf['roll_fantasy_3'] = pf['player_roll3_fantasy']
+    pf['roll_fantasy_5'] = pf['player_roll5_fantasy']
+
     pf = pf.sort_values(by=['match_date', 'player_id']).reset_index(drop=True)
     return pf
+
+
+def build_feature_dictionary() -> pd.DataFrame:
+    """Generates the standardized feature dictionary contract for AFL predictive modeling."""
+    entries = [
+        # Match Rolling / Form Features
+        {
+            "feature": "home_win_streak",
+            "description": "Consecutive wins entering the match strictly prior to match time",
+            "computation_window": "Expanding strictly prior (shift(1))",
+            "source_columns": "is_win, team_score, opponent_score"
+        },
+        {
+            "feature": "away_win_streak",
+            "description": "Consecutive wins entering the match strictly prior to match time for away team",
+            "computation_window": "Expanding strictly prior (shift(1))",
+            "source_columns": "is_win, team_score, opponent_score"
+        },
+        {
+            "feature": "win_streak_diff",
+            "description": "Difference in pre-match win streak (home_win_streak - away_win_streak)",
+            "computation_window": "Pre-match differential",
+            "source_columns": "home_win_streak, away_win_streak"
+        },
+        {
+            "feature": "roll_win_3_diff",
+            "description": "Home minus away rolling win rate over last 3 matches",
+            "computation_window": "Previous 3 completed matches (shift(1))",
+            "source_columns": "is_win"
+        },
+        {
+            "feature": "roll_win_5_diff",
+            "description": "Home minus away rolling win rate over last 5 matches",
+            "computation_window": "Previous 5 completed matches (shift(1))",
+            "source_columns": "is_win"
+        },
+        {
+            "feature": "roll_margin_5_diff",
+            "description": "Home minus away rolling average margin over last 5 matches",
+            "computation_window": "Previous 5 completed matches (shift(1))",
+            "source_columns": "team_score, opponent_score"
+        },
+        {
+            "feature": "roll_score_5_diff",
+            "description": "Home minus away rolling average points scored over last 5 matches",
+            "computation_window": "Previous 5 completed matches (shift(1))",
+            "source_columns": "team_score"
+        },
+        {
+            "feature": "roll_conceded_5_diff",
+            "description": "Home minus away rolling points conceded over last 5 matches",
+            "computation_window": "Previous 5 completed matches (shift(1))",
+            "source_columns": "opponent_score"
+        },
+        # Head-to-Head & Contextual Features
+        {
+            "feature": "h2h_games_count",
+            "description": "Historical head-to-head match count prior to target match",
+            "computation_window": "Expanding historical (shift(1))",
+            "source_columns": "team, opponent"
+        },
+        {
+            "feature": "h2h_home_win_rate",
+            "description": "Home team win % against this opponent in all prior meetings",
+            "computation_window": "Expanding historical (shift(1))",
+            "source_columns": "team, opponent, is_win"
+        },
+        {
+            "feature": "h2h_last3_home_win_rate",
+            "description": "Home team win rate against this opponent across last 3 H2H meetings",
+            "computation_window": "Rolling 3 H2H meetings (shift(1))",
+            "source_columns": "team, opponent, is_win"
+        },
+        {
+            "feature": "venue",
+            "description": "Stadium / ground where match is hosted",
+            "computation_window": "Match context",
+            "source_columns": "venue"
+        },
+        {
+            "feature": "home_venue_games",
+            "description": "Historical match count played by home club at this venue",
+            "computation_window": "Expanding historical (shift(1))",
+            "source_columns": "team, venue"
+        },
+        {
+            "feature": "home_venue_win_rate",
+            "description": "Home team historical win % at this specific venue",
+            "computation_window": "Expanding historical (shift(1))",
+            "source_columns": "team, venue, is_win"
+        },
+        {
+            "feature": "home_days_rest",
+            "description": "Days elapsed since home team's previous completed match",
+            "computation_window": "Pre-match lag (clipped 4-21 days)",
+            "source_columns": "match_date, team"
+        },
+        {
+            "feature": "away_days_rest",
+            "description": "Days elapsed since away team's previous completed match",
+            "computation_window": "Pre-match lag (clipped 4-21 days)",
+            "source_columns": "match_date, team"
+        },
+        {
+            "feature": "rest_diff",
+            "description": "Rest differential: home_days_rest - away_days_rest",
+            "computation_window": "Pre-match differential",
+            "source_columns": "home_days_rest, away_days_rest"
+        },
+        {
+            "feature": "is_interstate_match",
+            "description": "Binary flag indicating visiting team traveled interstate",
+            "computation_window": "Match context",
+            "source_columns": "home_state, away_state"
+        },
+        {
+            "feature": "away_interstate_travel",
+            "description": "Flag for non-Victorian visiting team traveling interstate",
+            "computation_window": "Match context",
+            "source_columns": "home_state, away_state"
+        },
+        {
+            "feature": "home_pre_match_pts",
+            "description": "Home team cumulative ladder points entering the round",
+            "computation_window": "In-season cumulative prior (shift(1))",
+            "source_columns": "pts_earned"
+        },
+        {
+            "feature": "away_pre_match_pts",
+            "description": "Away team cumulative ladder points entering the round",
+            "computation_window": "In-season cumulative prior (shift(1))",
+            "source_columns": "pts_earned"
+        },
+        {
+            "feature": "home_pre_match_pct",
+            "description": "Home team scoring percentage (For / Against * 100) entering round",
+            "computation_window": "In-season cumulative prior (shift(1))",
+            "source_columns": "team_score, opponent_score"
+        },
+        {
+            "feature": "away_pre_match_pct",
+            "description": "Away team scoring percentage entering round",
+            "computation_window": "In-season cumulative prior (shift(1))",
+            "source_columns": "team_score, opponent_score"
+        },
+        {
+            "feature": "home_ladder_rank",
+            "description": "Home club ladder ranking entering the round",
+            "computation_window": "In-season round ranking prior",
+            "source_columns": "cum_pts, cum_pct"
+        },
+        {
+            "feature": "away_ladder_rank",
+            "description": "Away club ladder ranking entering the round",
+            "computation_window": "In-season round ranking prior",
+            "source_columns": "cum_pts, cum_pct"
+        },
+        {
+            "feature": "ladder_rank_diff",
+            "description": "Pre-match ladder standing advantage: away_ladder_rank - home_ladder_rank",
+            "computation_window": "Pre-match differential",
+            "source_columns": "away_ladder_rank, home_ladder_rank"
+        },
+        # Player Rolling Output Features
+        {
+            "feature": "roll_disposals_3",
+            "description": "Player rolling average disposals over last 3 matches",
+            "computation_window": "Previous 3 player matches (shift(1))",
+            "source_columns": "disposals"
+        },
+        {
+            "feature": "roll_disposals_5",
+            "description": "Player rolling average disposals over last 5 matches",
+            "computation_window": "Previous 5 player matches (shift(1))",
+            "source_columns": "disposals"
+        },
+        {
+            "feature": "player_disposals_roll5_std",
+            "description": "Standard deviation of disposals over last 5 matches (consistency)",
+            "computation_window": "Previous 5 player matches (shift(1))",
+            "source_columns": "disposals"
+        },
+        {
+            "feature": "roll_goals_3",
+            "description": "Player rolling average goals over last 3 matches",
+            "computation_window": "Previous 3 player matches (shift(1))",
+            "source_columns": "goals"
+        },
+        {
+            "feature": "roll_goals_5",
+            "description": "Player rolling average goals over last 5 matches",
+            "computation_window": "Previous 5 player matches (shift(1))",
+            "source_columns": "goals"
+        },
+        {
+            "feature": "roll_fantasy_3",
+            "description": "Player rolling AFL fantasy average over last 3 matches",
+            "computation_window": "Previous 3 player matches (shift(1))",
+            "source_columns": "fantasy_points"
+        },
+        {
+            "feature": "roll_fantasy_5",
+            "description": "Player rolling AFL fantasy average over last 5 matches",
+            "computation_window": "Previous 5 player matches (shift(1))",
+            "source_columns": "fantasy_points"
+        },
+        {
+            "feature": "player_h2h_opp_avg_disp",
+            "description": "Player's career average disposals against this specific opponent",
+            "computation_window": "Expanding historical (shift(1))",
+            "source_columns": "disposals, opponent"
+        },
+        {
+            "feature": "player_h2h_opp_avg_goals",
+            "description": "Player's career average goals against this specific opponent",
+            "computation_window": "Expanding historical (shift(1))",
+            "source_columns": "goals, opponent"
+        },
+        {
+            "feature": "career_games_entering",
+            "description": "Total career matches played prior to this match",
+            "computation_window": "Expanding count (shift(1))",
+            "source_columns": "player_id, match_date"
+        },
+        {
+            "feature": "pos_archetype",
+            "description": "Tactical player position archetype (Midfielder, Forward, Defender, Ruck)",
+            "computation_window": "Career profile clustering",
+            "source_columns": "disposals, goals, hit_outs, rebound_50s"
+        }
+    ]
+    return pd.DataFrame(entries)
 
 
 def get_time_based_split(
@@ -434,3 +676,4 @@ def get_time_based_split(
     test_df = df[df[year_col] == test_year].copy()
 
     return train_df, val_df, test_df
+

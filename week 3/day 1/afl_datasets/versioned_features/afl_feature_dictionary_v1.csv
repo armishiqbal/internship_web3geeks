@@ -1,0 +1,68 @@
+feature,description,computation_window,source_columns
+match_id,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+round,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+venue,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_team,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_team,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+crowd,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_win_streak,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_win_streak,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+win_streak_diff,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_roll_win_3,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_roll_win_3,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+roll_win_3_diff,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_roll_win_5,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_roll_win_5,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+roll_win_5_diff,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_roll_margin_5,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_roll_margin_5,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+roll_margin_5_diff,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_roll_score_5,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_roll_score_5,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+roll_score_5_diff,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_roll_conceded_5,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_roll_conceded_5,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+roll_conceded_5_diff,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_days_rest,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_days_rest,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+rest_diff,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_state,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_state,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+is_interstate_match,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_interstate_travel,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_venue_games,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_venue_win_rate,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+h2h_games_count,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+h2h_home_win_rate,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+h2h_last3_home_win_rate,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_pre_match_pts,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_pre_match_pts,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_pre_match_pct,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_pre_match_pct,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+home_ladder_rank,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+away_ladder_rank,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+ladder_rank_diff,Pre-match engineered match feature generated from historical information only.,Historical pre-match window; current match excluded.,Engineered from AFL match and team history.
+player_id,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_name,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+team,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+opponent,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+round,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+pos_archetype,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+career_games_entering,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+is_disposals_30_plus,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+is_goals_3_plus,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_roll3_disposals,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_roll5_disposals,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_disposals_roll5_std,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_roll3_goals,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_roll5_goals,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_roll3_fantasy,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_roll5_fantasy,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_h2h_opp_avg_disp,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+player_h2h_opp_avg_goals,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+roll_disposals_3,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+roll_disposals_5,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+roll_goals_3,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+roll_goals_5,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+roll_fantasy_3,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.
+roll_fantasy_5,Pre-match player feature generated from historical player-match information only.,Historical pre-match window; current player-match excluded.,Engineered from AFL player statistics.

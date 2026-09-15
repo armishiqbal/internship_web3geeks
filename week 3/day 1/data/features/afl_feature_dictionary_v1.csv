@@ -1,0 +1,17 @@
+feature,description,computation_window,source_columns
+roll_win_3_diff,Home minus away rolling win rate,Previous 3 completed matches,Historical match results
+roll_win_5_diff,Home minus away rolling win rate,Previous 5 completed matches,Historical match results
+roll_margin_5_diff,Home minus away rolling average margin,Previous 5 completed matches,Historical scores
+roll_score_5_diff,Home minus away rolling average score,Previous 5 completed matches,Historical scores
+home_days_rest,Days since home team's previous match,Previous completed match,Match dates
+away_days_rest,Days since away team's previous match,Previous completed match,Match dates
+rest_diff,Home rest minus away rest,Current pre-match context,Match dates
+ladder_rank_diff,Pre-match ladder rank differential,All matches completed before target,Historical match results
+home_pre_match_pct,Home team's percentage entering match,Prior matches only,Historical scores
+away_pre_match_pct,Away team's percentage entering match,Prior matches only,Historical scores
+roll_disposals_3,Player rolling average disposals,Previous 3 player matches,Player match statistics
+roll_disposals_5,Player rolling average disposals,Previous 5 player matches,Player match statistics
+roll_goals_3,Player rolling average goals,Previous 3 player matches,Player match statistics
+roll_goals_5,Player rolling average goals,Previous 5 player matches,Player match statistics
+roll_fantasy_3,Player rolling fantasy average,Previous 3 player matches,Player match statistics
+roll_fantasy_5,Player rolling fantasy average,Previous 5 player matches,Player match statistics
