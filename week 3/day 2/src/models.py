@@ -57,6 +57,11 @@ def load_datasets() -> Tuple[pd.DataFrame, pd.DataFrame]:
     mf = pd.read_parquet(match_path)
     pf = pd.read_parquet(player_path)
 
+    if 'home_team_win' not in mf.columns and 'margin' in mf.columns:
+        mf['home_team_win'] = (mf['margin'] > 0).astype(int)
+    if 'home_margin' not in mf.columns and 'margin' in mf.columns:
+        mf['home_margin'] = mf['margin']
+
     # Ensure match_key in player features to link to matches
     p_teams = pf.apply(lambda r: tuple(sorted([r['team'], r['opponent']])), axis=1)
     pf['match_key'] = pf['match_date'].astype(str) + '_' + p_teams.apply(lambda t: t[0] + '_vs_' + t[1])
@@ -65,6 +70,7 @@ def load_datasets() -> Tuple[pd.DataFrame, pd.DataFrame]:
     mf['match_key'] = mf['match_date'].astype(str) + '_' + m_teams.apply(lambda t: t[0] + '_vs_' + t[1])
 
     return mf, pf
+
 
 
 def evaluate_match_winner_baselines(train_mf: pd.DataFrame, test_mf: pd.DataFrame) -> pd.DataFrame:
