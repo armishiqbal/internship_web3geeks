@@ -2,9 +2,7 @@
 ## Match Winner Forecasting & Top Player Performance Engine
 
 **Author:** Senior Sports Data Scientist & Machine Learning Engineer  
-**Date:** September 16, 2026  
 **Curriculum Scope:** Week 3 Day 2 — Baseline Models, Calibrated Classification, Pointwise Regression, Ranking Metrics, Feature Interpretability, and Production Agent Tools  
-**Verification Suite:** 10/10 Checks Passed (`verify_day2.py`)  
 **Downstream Consumer:** Day 4 LangChain & LangGraph Autonomous Multi-Agent System  
 
 ---
@@ -334,48 +332,6 @@ The tools implement 5 layers of input protection:
 
 ---
 
-## Verification Suite: 10/10 Verification Report
-
-Running [`python verify_day2.py`](file:///d:/internship/week%203/day%202/verify_day2.py) executes all 10 curriculum criteria:
-
-```text
-================================================================================
-RUNNING WEEK 3 DAY 2 VERIFICATION SUITE — 10 BY 10 CHECKS
-================================================================================
-[Check 1/10] Verifying Match Winner Baselines on 2025 Holdout...
-  --> PASSED: Evaluated 2 baselines (Home Acc: 0.556, Ladder Acc: 0.662).
-
-[Check 2/10] Verifying Top Player Baselines on 2025 Holdout...
-  --> PASSED: Baseline Top-5 Hit: 67.1%, NDCG@5: 0.858, MAE: 4.04
-
-[Check 3/10] Verifying Match Winner Pipeline Architecture...
-  --> PASSED: Built ColumnTransformer pipelines with Logistic Regression & Calibrated GBDT.
-
-[Check 4/10] Verifying Match Winner Holdout Evaluation & Calibration...
-  --> PASSED: Calibrated GBDT Holdout Accuracy: 69.0%, Brier: 0.1990
-
-[Check 5/10] Verifying Top Player Regression Framing & Multi-Stat Models...
-  --> PASSED: Verified Pointwise Regression pipelines for Disposals, Goals, Fantasy Points, and Impact Score.
-
-[Check 6/10] Verifying Top Player Model Beats Baseline...
-  --> PASSED: Model achieved MAE 3.93 (vs Baseline 4.04) and Top-5 Hit 71.8% (vs 67.1%).
-
-[Check 7/10] Verifying Feature Importances & Leakage Audit...
-  --> PASSED: Audited features — zero post-match variables present; strict temporal integrity.
-
-[Check 8/10] Verifying Expert Sniff Test on 3 Held-Out Matches...
-  --> PASSED: Validated 3 sniff test matches (['2025 Grand Final (MCG: Ge', '2025 Round 4 Rivalry (MCG', '2025 Round 8 Sydney Derby']).
-
-[Check 9/10] Verifying Callable predict.py Tools & Input Validation...
-  --> PASSED: Callable functions validated with robust input checks and descriptive errors.
-
-[Check 10/10] Verifying Deliverables, Artifacts, and Figures...
-  --> PASSED: All 7 model artifacts and 4 publication figures verified in place.
-
-================================================================================
-VERIFICATION COMPLETE: 10/10 CHECKS PASSED (100% SUCCESS — 10 BY 10)
-================================================================================
-```
 
 ---
 
@@ -403,23 +359,18 @@ d:/internship/week 3/day 2/
 └── src/
     ├── __init__.py                                   # Package initialization
     ├── models.py                                     # Pipeline training, evaluation & figures module
-    ├── predict.py                                    # Core prediction logic & defensive validation
-    └── build_notebook.py                             # Script generating the reproducible notebook
+    └── predict.py                                    # Core prediction logic & defensive validation
 ```
 
 ---
 
 ## How to Test & Reproduce
-
-1. **Run the 10/10 Automated Verification Suite:**
+ 
+1. **Execute the Jupyter Notebook:**
+   Open [`day2.ipynb`](file:///d:/internship/week%203/day%202/day2.ipynb) and select **Run All Cells**. All 16 cells execute cleanly from top to bottom with zero warnings or errors.
+2. **Test the Callable Interface via CLI:**
    ```bash
    cd "d:/internship/week 3/day 2"
-   python verify_day2.py
-   ```
-2. **Execute the Jupyter Notebook:**
-   Open [`day2.ipynb`](file:///d:/internship/week%203/day%202/day2.ipynb) and select **Run All Cells**. All 16 cells execute cleanly from top to bottom with zero warnings or errors.
-3. **Test the Callable Interface via CLI:**
-   ```bash
    python predict.py
    ```
 4. **Interactive Python Usage:**
