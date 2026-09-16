@@ -13,7 +13,18 @@
 
 Week 3 Day 3 builds the conversational core of the AFL intelligence platform: an autonomous chat assistant strictly scoped to Australian Rules Football (AFL). The agent is engineered to eliminate hallucinations by anchoring every statistical assertion in real, verified datasets, while politely redirecting off-topic queries back to footy topics.
 
-```
+<p align="center">
+  <img src="figures/executive_architecture.png" alt="Week 3 Day 3 AFL Chat Agent Architectural Flow" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+</p>
+
+![Week 3 Day 3 AFL Chat Agent Architectural Flow](figures/executive_architecture.png)
+
+> **Figure 1.0 — Domain-Scoped AFL Chat Agent Architecture:** *End-to-end execution topology showing pre-inference regex and semantic guardrails, dual retrieval tracks (Pandas structured data vs. ChromaDB vector store), mathematical Grounding Auditor (0% hallucinated stats guarantee), and stateful multi-turn memory.*
+
+<details>
+<summary><b>Click to expand ASCII Architecture Flowchart</b></summary>
+
+```text
                       ┌─────────────────────────────────────────────────────────────┐
                       │                     USER INPUT PROMPT                       │
                       └──────────────────────────────┬──────────────────────────────┘
@@ -70,6 +81,7 @@ Week 3 Day 3 builds the conversational core of the AFL intelligence platform: an
                                              │  - Appends to ChatHistory    │
                                              └──────────────────────────────┘
 ```
+</details>
 
 ### Core Architectural Pillars
 1. **Scope Guardrails with Polite Redirection:** Intercepts out-of-scope inquiries (soccer, NBA, coding, recipes) and adversarial jailbreak attempts before generation, offering constructive footy-themed follow-ups rather than blunt refusals.
@@ -166,28 +178,13 @@ We evaluated the agent against 10 adversarial attacks, spanning direct persona o
 ### 2.1 Structured vs. Semantic Retrieval: Architectural Split Justification
 In sports predictive analytics and conversational intelligence, the data retrieval mechanism must match the underlying data structure:
 
-```
-                           ┌────────────────────────────────────────┐
-                           │          DATA RETRIEVAL SPLIT          │
-                           └──────────────────┬─────────────────────┘
-                                              │
-                    ┌─────────────────────────┴─────────────────────────┐
-                    ▼                                                   ▼
-┌───────────────────────────────────────┐   ┌───────────────────────────────────────┐
-│         STRUCTURED RETRIEVAL          │   │          SEMANTIC RETRIEVAL           │
-│  (Pandas/Parquet Exact Data Queries)  │   │     (LangChain VectorStore Cosine)    │
-├───────────────────────────────────────┤   ├───────────────────────────────────────┤
-│ • Player round-by-round statistics    │   │ • AFL Rules & scoring definitions     │
-│ • Season totals and averages          │   │ • Umpiring terminology (mark, behind) │
-│ • Team head-to-head records & margins │   │ • Stadium guides (MCG, Gabba, Marvel) │
-│ • Historical ladder results           │   │ • Club founding heritage & honors     │
-├───────────────────────────────────────┤   ├───────────────────────────────────────┤
-│ ZERO-TOLERANCE FOR HALLUCINATION:     │   │ CONCEPTUAL FLEXIBILITY:               │
-│ Exact numerical lookup guarantees     │   │ Semantic similarity retrieves relevant│
-│ Nick Daicos' Round 10 disposals is 41,│   │ textual descriptions regardless of    │
-│ not a fuzzy approximation (e.g. 39).  │   │ specific phrasing used by user.       │
-└───────────────────────────────────────┘   └───────────────────────────────────────┘
-```
+<p align="center">
+  <img src="figures/retrieval_architecture.png" alt="AFL Retrieval Architecture: Structured vs Semantic Split" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.3);" />
+</p>
+
+![AFL Retrieval Architecture: Structured vs Semantic Split](figures/retrieval_architecture.png)
+
+> **Figure 2.0 — Dual-Track Retrieval Architecture:** *Exact statistical lookups are routed deterministically to Pandas feature tables (0% hallucination), while conceptual rules and stadium lore are routed to dense vector embeddings.*
 
 1. **Why Exact Structured Lookups are Mandatory for Stats:**
    - In statistical sports inquiries, mathematical accuracy is binary: Nick Daicos either had 41 disposals in Round 10 of 2024 or he did not.
@@ -279,6 +276,14 @@ audit_hallucinated = GroundingAuditor.audit(hallucinated_text, tool_payload)
 ## Task 4: Multi-Turn Conversational Memory & Dialogue
 
 The agent integrates `ChatMessageHistory` and an internal coreference state engine that tracks the current focus club, player, season, and round across consecutive turns.
+
+<p align="center">
+  <img src="figures/multi_turn_sequence.png" alt="Multi-Turn Memory and Coreference Resolution Flow" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.3);" />
+</p>
+
+![Multi-Turn Memory and Coreference Resolution Flow](figures/multi_turn_sequence.png)
+
+> **Figure 4.0 — Multi-Turn Dialogue Sequence & Coreference Resolution:** *Demonstrating how session memory resolves pronoun 'he' to entity 'Brent Harvey' across multiple conversational turns.*
 
 ### Verified 5-Turn Footy Conversation Transcript
 
@@ -433,19 +438,33 @@ FINAL RESULT: ALL REQUIREMENTS VERIFIED AND PASSED SUCCESSFULLY
 
 ## Directory Structure & Deliverables
 
+### Core Deliverables Checklist
+* ✅ **Deliverable 1: Working LangChain-Based AFL Chat Agent**
+  * Fully implemented in [`src/agent.py`](file:///d:/internship/week%203/day%203/src/agent.py), [`src/tools.py`](file:///d:/internship/week%203/day%203/src/tools.py), [`src/guardrails.py`](file:///d:/internship/week%203/day%203/src/guardrails.py), [`src/vector_store.py`](file:///d:/internship/week%203/day%203/src/vector_store.py), and [`src/prompts.py`](file:///d:/internship/week%203/day%203/src/prompts.py).
+  * Validated interactively in [`day3.ipynb`](file:///d:/internship/week%203/day%203/day3.ipynb) across all 5 curriculum tasks.
+* ✅ **Deliverable 2: Guardrail Evaluation Report**
+  * Standalone formal audit report in [`GUARDRAIL_EVALUATION_REPORT.md`](file:///d:/internship/week%203/day%203/GUARDRAIL_EVALUATION_REPORT.md).
+  * Covers 10 adversarial attacks, 15-prompt benchmark, metrics (100% accuracy, 100% grounding), and 4 failure patterns with applied engineering fixes.
+
 ```
 d:\internship\week 3\day 3\
-├── README.md                 # Complete technical documentation & architecture report
-├── day3.ipynb                # Fully executed Jupyter Notebook with interactive cells
-├── verify_day3.py            # Automated requirement verification test runner
+├── README.md                          # Complete technical documentation & architecture report
+├── GUARDRAIL_EVALUATION_REPORT.md     # Deliverable 2: Formal guardrail evaluation & audit report
+├── day3.ipynb                         # Fully executed Jupyter Notebook with verified cell outputs
+├── verify_day3.py                     # Automated requirement verification test runner (10/10 gates)
+├── figures/                           # High-resolution architectural and sequence diagrams
+│   ├── executive_architecture.png     # End-to-end AFL chat agent architecture
+│   ├── retrieval_architecture.png     # Structured vs semantic retrieval split
+│   ├── multi_turn_sequence.png        # Multi-turn memory & coreference sequence
+│   └── roadmap_architecture.png       # Week 3 Day 1-4 curriculum progression roadmap
 └── src/
-    ├── __init__.py           # Package exports
-    ├── prompts.py            # System prompts, scope taxonomies, and 3 refusal templates
-    ├── guardrails.py         # Scope classifier, adversarial filters, and GroundingAuditor
-    ├── vector_store.py       # LangChain VectorStore over AFL rules, stadiums, and clubs
-    ├── tools.py              # LangChain @tool definitions with Pydantic schemas over Day 1 data
-    ├── agent.py              # LangChain AFL agent with multi-turn memory & coreference tracking
-    └── evaluation.py         # 10 adversarial tests, 15+ benchmark evaluator, failure reports
+    ├── __init__.py                    # Package exports
+    ├── prompts.py                     # System prompts, scope taxonomies, and 3 refusal templates
+    ├── guardrails.py                  # Scope classifier, adversarial filters, and GroundingAuditor
+    ├── vector_store.py                # LangChain VectorStore over AFL rules, stadiums, and clubs
+    ├── tools.py                       # LangChain @tool definitions with Pydantic schemas
+    ├── agent.py                       # LangChain AFL agent with multi-turn memory & coreference
+    └── evaluation.py                  # 10 adversarial tests, 15+ benchmark evaluator, failure reports
 ```
 
 ---
