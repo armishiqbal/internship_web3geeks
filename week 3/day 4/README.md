@@ -417,7 +417,6 @@ week 3/day 4/
 │   └── probabilistic_prediction_flow.png# Prediction pipeline diagram
 ├── test_router_accuracy.py      # Task 2 accuracy evaluation benchmark (20 queries)
 ├── verify_day4.py               # Task 5 verification suite (10 scenarios + multi-turn)
-├── generate_figures.py          # High-resolution figure generator
 ├── day4.ipynb                   # Pre-executed Jupyter notebook with all outputs
 ├── annotated_state_traces.json  # Full JSON serialization of 3 representative state traces
 ├── WEEK3_DAY4_REPORT.md         # Formal technical report
@@ -433,7 +432,4 @@ python "week 3/day 4/test_router_accuracy.py"
 
 # 2. Run Task 5 End-to-End Multi-Scenario Verification Suite (10 Paths + Multi-Turn)
 python "week 3/day 4/verify_day4.py"
-
-# 3. Regenerate High-Resolution Production Figures
-python "week 3/day 4/generate_figures.py"
 ```
