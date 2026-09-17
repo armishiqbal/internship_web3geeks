@@ -60,10 +60,14 @@ cells = [
             "    except Exception:\n",
             "        pass\n",
             "\n",
-            "# Add Day 4 src to path\n",
-            "CURRENT_DIR = os.getcwd()\n",
-            "if CURRENT_DIR not in sys.path:\n",
-            "    sys.path.insert(0, CURRENT_DIR)\n",
+            "# Add Day 4 src and root to path\n",
+            "DAY4_DIR = os.path.abspath(os.path.dirname(__file__)) if '__file__' in locals() else os.path.abspath(r'd:/internship/week 3/day 4')\n",
+            "if DAY4_DIR not in sys.path:\n",
+            "    sys.path.insert(0, DAY4_DIR)\n",
+            "try:\n",
+            "    os.chdir(DAY4_DIR)\n",
+            "except Exception:\n",
+            "    pass\n",
             "\n",
             "from src.state import AFLGraphState, create_initial_state\n",
             "from src.router import AFLIntentRouter, router_node\n",
@@ -324,9 +328,22 @@ cells = [
 notebook_dict = {
     "cells": cells,
     "metadata": {
+        "kernelspec": {
+            "display_name": "Python 3.14 (internship)",
+            "language": "python",
+            "name": "python314"
+        },
         "language_info": {
+            "codemirror_mode": {
+                "name": "ipython",
+                "version": 3
+            },
+            "file_extension": ".py",
+            "mimetype": "text/x-python",
             "name": "python",
-            "version": "3.11"
+            "nbconvert_exporter": "python",
+            "pygments_lexer": "ipython3",
+            "version": "3.14.3"
         }
     },
     "nbformat": 4,
