@@ -263,3 +263,8 @@ def run_afl_turn(user_query: str, history: Optional[List[Dict[str, str]]] = None
     initial_state = create_initial_state(user_query, history)
     final_state = app.invoke(initial_state)
     return final_state
+def run_afl_agent(
+    user_query: str,
+    history: Optional[List[Dict[str, str]]] = None
+) -> AFLGraphState:
+    return run_afl_turn(user_query, history)
